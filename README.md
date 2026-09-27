@@ -18,4 +18,4 @@ An interactive web application designed to help users discover new K-pop artists
 ## Running Locally
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/corpcooga/kpop-recommendations.git](https://github.com/corpcooga/kpop-recommendations.git)
+   git clone https://github.com/corpcooga/kpop-recommendations.git
