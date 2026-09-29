@@ -8,8 +8,6 @@ An interactive web application designed to help users discover new K-pop artists
 
 ## Preview
 
-### Preview
-
 | Desktop View | Mobile View (<768px) |
 | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/9aebbc93-6129-4c70-8e06-3b34fa81f63e" width="100%" alt="Playlists - Desktop" /> | <img src="https://github.com/user-attachments/assets/d9ed1149-6894-4669-8770-3ff89e874678" width="100%" alt="Playlists - Mobile" /> |
