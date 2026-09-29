@@ -6,6 +6,17 @@ An interactive web application designed to help users discover new K-pop artists
 
 ---
 
+## Preview
+
+### Preview
+
+| Desktop View | Mobile View (<768px) |
+| :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/9aebbc93-6129-4c70-8e06-3b34fa81f63e" width="100%" alt="Playlists - Desktop" /> | <img src="https://github.com/user-attachments/assets/d9ed1149-6894-4669-8770-3ff89e874678" width="100%" alt="Playlists - Mobile" /> |
+| <img src="https://github.com/user-attachments/assets/1c602989-85a5-4a67-aad0-2ba2927e0432" width="100%" alt="Song Recommendations - Desktop" /> | <img src="https://github.com/user-attachments/assets/93c74cb8-3ee7-4e77-94d8-dec0e6bdabd9" width="100%" alt="Song Recommendations - Mobile" /> |
+
+---
+
 ## Features
 - **Curated Recommendations:** Song suggestions organized by mood.
 - **Responsive Design:** Optimized layout for desktop and mobile web browsing.
