@@ -24,5 +24,9 @@ navLinks.forEach((link) => {
 	if (link.getAttribute("href") === currentPage) {
 		link.classList.add("active");
 		link.setAttribute("aria-current", "page"); // Accessibility best practice
+
+		link.addEventListener("click", (e) => {
+			e.preventDefault();
+		});
 	}
 });

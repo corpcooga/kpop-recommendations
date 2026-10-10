@@ -69,6 +69,8 @@ header {
 	font-weight: bold;
 	text-decoration: underline;
 	text-decoration-thickness: 2px;
+	pointer-events: none; /* disables clicking on the active link */
+	cursor: default; /* changes cursor to default arrow */
 }
 
 /* nav links spacing styling on smaller screens */
