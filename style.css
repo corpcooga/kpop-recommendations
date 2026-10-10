@@ -65,10 +65,10 @@ header {
 }
 
 /* current page nav link styling */
-span.active {
+.nav-links a.active {
 	font-weight: bold;
-	color: aliceblue;
-	padding: 1.8rem 0.75rem;
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
 }
 
 /* nav links spacing styling on smaller screens */
@@ -84,9 +84,14 @@ span.active {
 }
 
 /* main title styling */
-.site-title {
+.site-title a {
+	color: inherit;
 	font-size: 1.8rem;
 	font-weight: bold;
+}
+
+.site-title a:hover {
+	color: inherit;
 }
 
 /* content backing styling */
