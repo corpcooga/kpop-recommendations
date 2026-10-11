@@ -92,6 +92,7 @@ header {
 	font-weight: bold;
 }
 
+/* main title hover styling */
 .site-title a:hover {
 	color: inherit;
 }
@@ -146,23 +147,67 @@ a:hover {
 	color: lightskyblue;
 }
 
-/* apple music song styling */
-iframe {
-    border-radius: 20px;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-}
-
 /* grid layout for song recommendations */
-.container {
+.song-grid {
 	display: grid;
 	grid-template-columns: auto auto;
-	gap: 10px 20px;
-	margin: 10px 0;
+	gap: 0.5rem 1rem;
+	margin: 0.5rem 0;
+}
+
+/* TODO refine */
+.song-card {
+	display: flex;
+	align-items: center;
+	background: white;
+	border-radius: 20px;
+	border: 1px solid lightgray;
+	padding: 0.75rem 1rem;
+	cursor: pointer;
+	box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+	transition: transform 0.2s ease;
+	min-width: 0; /* prevents flex text overflows */
+}
+
+.song-card:hover {
+	transform: translateY(-2px);
+}
+
+.song-cover {
+	width: 120px;
+	height: 120px;
+	flex-shrink: 0;
+	border-radius: 10px;
+	object-fit: cover;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+.song-info {
+	user-select: none;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.song-title {
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.song-artist {
+	font-size: 0.85rem;
+	color: #aaa;
+}
+
+.play-indicator {
+	font-size: 1.5rem;
+	user-select: none;
 }
 
 /* grid layout becomes one column on smaller screens */
 @media screen and (max-width: 768px) {
-	.container {
+	.song-grid {
 		grid-template-columns: auto;
 	}
 }
@@ -171,7 +216,7 @@ iframe {
 #special-song {
 	display: flex;
 	justify-content: center;
-	margin: 10px 0;
+	margin: 0.5rem 0;
 }
 
 /* playlist section description styling */
@@ -179,9 +224,10 @@ iframe {
 	text-align: center;
 	font-size: 1.2rem;
 	font-weight: bold;
-	margin: 20px 0 30px 0;
+	margin: 0.5rem 0 1.5rem 0;
 }
 
+/* TODO change transition */
 /* playlist icon styling */
 .playlist_icon {
 	width: 100%;
@@ -198,7 +244,7 @@ iframe {
 /* playlist table styling */
 table {
 	border-collapse: collapse;
-	margin: 20px 0;
+	margin: 0.5rem 0;
 }
 
 /* table border and spacing */
