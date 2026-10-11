@@ -158,14 +158,14 @@ a {
 	gap: 1rem;
 	background: white;
 	border-radius: 20px;
-	border: 1px solid lightgray;
 	padding: 1rem;
 	cursor: pointer;
 	min-width: 0;
 	font-family: inherit;
 	text-align: left;
-	transition: 0.2s ease;
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+	border: 1px solid lightgray;
+	transition: 0.2s ease;
 }
 
 /* card hover effect */
