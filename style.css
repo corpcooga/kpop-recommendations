@@ -15,6 +15,7 @@ main {
 	flex: 1;
 }
 
+/* TODO fix color scheme */
 /* header and footer colors */
 header, footer {
 	color: aliceblue;
@@ -22,8 +23,7 @@ header, footer {
 	background: linear-gradient(to right, rgba(0, 0, 128, 0.9), rgba(72, 61, 139, 0.9));
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* header and navigation styling */
@@ -38,20 +38,15 @@ header {
 
 /* stack header elements vertically on small screens */
 @media screen and (max-width: 768px) {
+	/* TODO fix */
 	header {
 		--header-y: 0px;
 		transform: translateY(var(--header-y));
 		flex-direction: column;
-		align-items: stretch;
 		text-align: center;
 		padding: 0;
 		will-change: transform;
-		transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
-	}
-
-	/* While finger is actively scrolling, disable CSS transition for instant 1:1 response */
-	header.is-scrolling {
-		transition: none;
+		transition: 0.2s ease;
 	}
 
 	/* Slides header off-screen when scrolling down */
@@ -69,11 +64,10 @@ header {
 /* nav link formatting and styling */
 .nav-links {
 	font-size: 1.2rem;
+	letter-spacing: -0.02em;
 	list-style: none;
 	display: flex;
 	margin: 0;
-	padding: 0;
-	letter-spacing: -0.02em;
 }
 
 /* individual nav link styling */
@@ -82,7 +76,7 @@ header {
 	font-weight: 500;
 	padding: 2rem 0.8rem;
 	display: flex;
-	transition: background-color 0.2s ease, color 0.2s ease;
+	transition: 0.2s ease;
 }
 
 /* individual nav link hover styling */
@@ -95,24 +89,25 @@ header {
 .nav-links a.active {
 	color: aliceblue;
 	font-weight: 800;
-	opacity: 1;
 	pointer-events: none; /* disables clicking on the active link */
 	cursor: default; /* changes cursor to default arrow */
 }
 
 /* nav links spacing styling on smaller screens */
 @media screen and (max-width: 768px) {
+	/* TODO Maybe change to use grid? */
 	.nav-links {
 		flex-direction: column;
-		margin-bottom: 1rem;
+		padding: 0;
 	}
-	.nav-links a, span.active {
-		padding: 0.5rem;
+
+	.nav-links a {
+		padding: 0.4rem;
 		display: block;
 	}
 }
 
-/* centering main title */
+/* centering main title vertically */
 .site-title {
 	display: flex;
 	align-items: center;
@@ -122,16 +117,14 @@ header {
 .site-title a {
 	color: inherit;
 	font-size: 1.5rem;
-	font-weight: bold;
+	font-weight: 700;
 	letter-spacing: -0.02em;
-	display: inline-block;
-	transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+	transition: 0.2s ease;
 }
 
-/* main title hover styling */
+/* main title enlarges on hover */
 .site-title a:hover {
-	color: inherit;
-	transform: scale(1.03); /* subtle spring pop */
+	transform: scale(1.03);
 }
 
 /* content backing styling */
@@ -140,7 +133,7 @@ section {
 	background-color: white;
 	border: 1px solid lightgray;
 	color: black;
-	padding: 1rem 2rem;
+	padding: 1.2rem 1.6rem;
 	border-radius: 20px;
 	box-sizing: border-box;
 	margin: 20px auto;
@@ -172,6 +165,7 @@ h2 {
 	font-weight: bold;
 }
 
+/* remove underline from links */
 a {
 	text-decoration: none;
 }
@@ -179,12 +173,12 @@ a {
 /* link styling */
 .text-link {
 	color: lightskyblue;
-	transition: opacity 0.2s ease;
+	transition: 0.2s ease;
 }
 
 /* link hover color change */
 .text-link:hover {
-	opacity: 0.7;
+	color: lightsteelblue;
 }
 
 /* grid layout for song recommendations */
@@ -192,7 +186,7 @@ a {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5rem;
-	margin: 1rem 0;
+	margin: 0.6rem 0;
 }
 
 /* grid layout becomes one column on smaller screens */
@@ -206,19 +200,17 @@ a {
 .song-card {
 	display: flex;
 	align-items: center;
-	gap: 1.25rem;
+	gap: 1rem;
 	background: #fdfdfd;
-	border-radius: 16px;
+	border-radius: 20px;
 	border: 1px solid lightgray;
 	padding: 1rem;
 	cursor: pointer;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-	transition: all 0.25s ease;
 	min-width: 0;
 	font-family: inherit;
 	text-align: left;
-	width: 100%;
-	box-sizing: border-box;
+	transition: 0.2s ease;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
 }
 
 /* card hover effect */
@@ -226,36 +218,32 @@ a {
 	transform: translateY(-2px);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 	border-color: #cbd5e1;
-	background: #ffffff;
+	background: white;
 }
 
 /* song cover art styling */
 .song-cover {
 	width: 84px;
 	height: 84px;
-	flex-shrink: 0;
 	border-radius: 12px;
-	object-fit: cover;
 	user-select: none;
 	-webkit-user-drag: none;
 }
 
 /* title & artist container */
 .song-info {
-	user-select: none;
-	flex-grow: 1;
-	min-width: 0;
-	overflow: hidden;
 	display: flex;
+	flex: 1;
+	min-width: 0;
 	flex-direction: column;
-	justify-content: center;
 	gap: 0.25rem;
 }
 
+/* song title styling */
 .song-title {
-	font-weight: 700;
 	font-size: 1.05rem;
-	color: #1e293b;
+	font-weight: 700;
+	color: black;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -263,8 +251,8 @@ a {
 
 .song-artist {
 	font-size: 0.9rem;
-	color: #64748b;
 	font-weight: 500;
+	color: slategray;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -274,7 +262,6 @@ a {
 .play-indicator {
 	width: 40px;
 	height: 40px;
-	flex-shrink: 0;
 	background-color: whitesmoke;
 	color: slateblue;
 	border-radius: 50%;
@@ -282,13 +269,13 @@ a {
 	align-items: center;
 	justify-content: center;
 	user-select: none;
-	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	transition: 0.2s ease;
 }
 
 /* play button reaction when card is hovered */
 .song-card:hover .play-indicator {
 	background-color: slateblue;
-	color: aliceblue;
+	color: whitesmoke;
 	transform: scale(1.08);
 }
 
@@ -300,24 +287,29 @@ a {
 	margin: 0.5rem 0 1.5rem 0;
 }
 
+/* TODO fix playlist styling */
 /* playlist icon styling */
 .playlist-icon {
-	width: 70%;
-	border-radius: 10%;
-	transition: box-shadow 0.3s ease, transform 0.3s ease;
+	width: 120px;
+	height: 120px;
+	display: block;
+	border-radius: 20px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	transition: 0.2s ease;
 	-webkit-user-drag: none;
 	user-select: none;
 }
 
 /* playlist icon hover animations */
 .playlist-icon:hover {
-	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
-	transform: scale(1.01);
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+	transform: scale(1.03);
 }
 
 /* playlist table styling */
 table {
 	border-collapse: collapse;
+	margin: 1rem auto 0rem auto;
 }
 
 /* table border and spacing */
@@ -348,7 +340,7 @@ input[type=text] {
 	border: 1px solid lightgray;
 	border-radius: 1rem;
 	outline: none;
-	transition: border 0.3s ease;
+	transition: 0.2s ease;
 }
 
 /* message box focus effect */
@@ -367,7 +359,7 @@ input[type=submit] {
 	border: none;
 	border-radius: 1rem;
 	cursor: pointer;
-	transition: box-shadow 0.3s ease, background-position 0.3s ease;
+	transition: 0.2s ease;
 }
 
 /* submit button hover effect */
