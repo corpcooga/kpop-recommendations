@@ -172,17 +172,19 @@ h2 {
 	font-weight: bold;
 }
 
-/* TODO change link colors */
-/* link styling */
 a {
-	color: slateblue;
 	text-decoration: none;
-	transition: color 0.1s ease;
+}
+
+/* link styling */
+.text-link {
+	color: lightskyblue;
+	transition: opacity 0.2s ease;
 }
 
 /* link hover color change */
-a:hover {
-	color: lightskyblue;
+.text-link:hover {
+	opacity: 0.7;
 }
 
 /* grid layout for song recommendations */
@@ -300,15 +302,16 @@ a:hover {
 }
 
 /* playlist icon styling */
-.playlist_icon {
-	width: 100%;
-	border-radius: 20%;
+.playlist-icon {
+	width: 70%;
+	border-radius: 10%;
 	transition: box-shadow 0.3s ease, transform 0.3s ease;
 	-webkit-user-drag: none;
+	user-select: none;
 }
 
 /* playlist icon hover animations */
-.playlist_icon:hover {
+.playlist-icon:hover {
 	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
 	transform: scale(1.01);
 }
@@ -316,14 +319,12 @@ a:hover {
 /* playlist table styling */
 table {
 	border-collapse: collapse;
-	margin: 0.5rem 0;
 }
 
 /* table border and spacing */
 td {
-	border-top: 2px solid silver;
-	border-bottom: 2px solid silver;
-	padding: 3% 2%;
+	border-top: 2px solid lightgray;
+	padding: 2%;
 }
 
 /* playlist names size */
