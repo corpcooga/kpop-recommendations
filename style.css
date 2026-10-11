@@ -54,7 +54,7 @@ header {
 	display: flex;
 	margin: 0;
 	padding: 0;
-	letter-spacing: 0.02em;
+	letter-spacing: -0.02em;
 }
 
 /* individual nav link styling */
@@ -91,6 +91,12 @@ header {
 		padding: 0.5rem;
 		display: block;
 	}
+}
+
+/* centering main title */
+.site-title {
+	display: flex;
+	align-items: center;
 }
 
 /* main title styling */
@@ -277,12 +283,13 @@ a:hover {
 	width: 100%;
 	border-radius: 20%;
 	transition: box-shadow 0.3s ease, transform 0.3s ease;
+	-webkit-user-drag: none;
 }
 
 /* playlist icon hover animations */
 .playlist_icon:hover {
-	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
-	transform: scale(1.02);
+	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
+	transform: scale(1.01);
 }
 
 /* playlist table styling */
