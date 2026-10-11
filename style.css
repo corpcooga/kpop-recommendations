@@ -45,6 +45,11 @@ header {
 		text-align: center;
 		padding: 0;
 	}
+
+	.site-title {
+		justify-content: center;
+		margin: 0.8rem 0 0.2rem 0;
+	}
 }
 
 /* nav link formatting and styling */
