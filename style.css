@@ -1,6 +1,6 @@
 /* global styling */
 body {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-size: 16px;
 	line-height: 1.6;
 	background-color: whitesmoke;
@@ -191,8 +191,15 @@ a {
 .song-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 0.5rem 1rem;
+	gap: 0.5rem;
 	margin: 1rem 0;
+}
+
+/* grid layout becomes one column on smaller screens */
+@media screen and (max-width: 768px) {
+	.song-grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 
 /* modern song card customization */
@@ -285,14 +292,6 @@ a {
 	transform: scale(1.08);
 }
 
-/* grid layout becomes one column on smaller screens */
-@media screen and (max-width: 768px) {
-	.song-grid {
-		grid-template-columns: 1fr;
-		gap: 1rem;
-	}
-}
-
 /* playlist section description styling */
 #playlist-description {
 	text-align: center;
@@ -323,12 +322,13 @@ table {
 
 /* table border and spacing */
 td {
-	border-top: 2px solid lightgray;
-	padding: 2%;
+	border-top: 1px solid lightgray;
+	padding: 1.5rem 0.5rem;
 }
 
 /* playlist names size */
-h3 {
+td h3 {
+	margin: 0 0 0.4rem 0;
 	font-size: 1.4rem;
 }
 
