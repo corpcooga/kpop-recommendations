@@ -20,8 +20,8 @@ header, footer {
 	color: aliceblue;
 	/* semi-transparent gradient */
 	background: linear-gradient(to right, rgba(0, 0, 128, 0.9), rgba(72, 61, 139, 0.9));
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -126,7 +126,7 @@ section {
 /* section heading styling */
 h2 {
 	font-size: 1.6rem;
-	color: darkblue;
+	color: darkslateblue;
 	border-bottom: 2px solid whitesmoke;
 	text-align: center;
 	padding-bottom: 0.5rem;
@@ -147,6 +147,7 @@ h2 {
 	font-weight: bold;
 }
 
+/* TODO change link colors */
 /* link styling */
 a {
 	color: slateblue;
@@ -175,7 +176,7 @@ a:hover {
 	background: #fdfdfd;
 	border-radius: 16px;
 	border: 1px solid lightgray;
-	padding: 0.75rem 1rem;
+	padding: 1rem;
 	cursor: pointer;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 	transition: all 0.25s ease;
@@ -239,7 +240,7 @@ a:hover {
 	height: 40px;
 	flex-shrink: 0;
 	background-color: whitesmoke;
-	color: darkslateblue;
+	color: slateblue;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -248,14 +249,9 @@ a:hover {
 	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-/* centering for play triangle */
-.play-indicator svg {
-	display: block;
-}
-
 /* play button reaction when card is hovered */
 .song-card:hover .play-indicator {
-	background-color: darkslateblue;
+	background-color: slateblue;
 	color: aliceblue;
 	transform: scale(1.08);
 }
@@ -266,13 +262,6 @@ a:hover {
 		grid-template-columns: 1fr;
 		gap: 1rem;
 	}
-}
-
-/* single song styling */
-#special-song {
-	display: flex;
-	justify-content: center;
-	margin: 0.5rem 0;
 }
 
 /* playlist section description styling */
