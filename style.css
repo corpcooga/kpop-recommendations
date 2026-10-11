@@ -150,65 +150,109 @@ a:hover {
 /* grid layout for song recommendations */
 .song-grid {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5rem 1rem;
-	margin: 0.5rem 0;
+	margin: 1rem 0;
 }
 
-/* TODO refine */
+/* modern song card customization */
 .song-card {
 	display: flex;
 	align-items: center;
-	background: white;
-	border-radius: 20px;
+	gap: 1.25rem;
+	background: #fdfdfd;
+	border-radius: 16px;
 	border: 1px solid lightgray;
 	padding: 0.75rem 1rem;
 	cursor: pointer;
-	box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-	transition: transform 0.2s ease;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	transition: all 0.25s ease;
 	min-width: 0; /* prevents flex text overflows */
+	font-family: inherit;
+	text-align: left;
+	width: 100%;
+	box-sizing: border-box;
 }
 
+/* card hover effect */
 .song-card:hover {
 	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	border-color: #cbd5e1;
+	background: #ffffff;
 }
 
+/* song cover art styling */
 .song-cover {
-	width: 120px;
-	height: 120px;
+	width: 84px;
+	height: 84px;
 	flex-shrink: 0;
-	border-radius: 10px;
+	border-radius: 12px;
 	object-fit: cover;
 	user-select: none;
 	-webkit-user-drag: none;
 }
 
+/* title & artist container */
 .song-info {
 	user-select: none;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	gap: 0.25rem;
 }
 
 .song-title {
-	font-weight: bold;
-	font-size: 1rem;
+	font-weight: 700;
+	font-size: 1.05rem;
+	color: #1e293b;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis; /*prevents long titles from breaking the card */
 }
 
 .song-artist {
-	font-size: 0.85rem;
-	color: #aaa;
+	font-size: 0.9rem;
+	color: #64748b;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
+/* circular play button */
 .play-indicator {
-	font-size: 1.5rem;
+	width: 40px;
+	height: 40px;
+	flex-shrink: 0;
+	background-color: whitesmoke;
+	color: darkslateblue;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	user-select: none;
+	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* centering for play triangle */
+.play-indicator svg {
+	display: block;
+}
+
+/* play button reaction when card is hovered */
+.song-card:hover .play-indicator {
+	background-color: darkslateblue;
+	color: aliceblue;
+	transform: scale(1.08);
 }
 
 /* grid layout becomes one column on smaller screens */
 @media screen and (max-width: 768px) {
 	.song-grid {
-		grid-template-columns: auto;
+		grid-template-columns: 1fr;
+		gap: 1rem;
 	}
 }
 
@@ -227,7 +271,6 @@ a:hover {
 	margin: 0.5rem 0 1.5rem 0;
 }
 
-/* TODO change transition */
 /* playlist icon styling */
 .playlist_icon {
 	width: 100%;

@@ -31,6 +31,17 @@ navLinks.forEach((link) => {
 	}
 });
 
+// Clean vector SVG icons
+const PLAY_ICON = `
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M8 5v14l11-7z"/>
+  </svg>`;
+
+const PAUSE_ICON = `
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+  </svg>`;
+
 // Global audio controller
 let currentAudio = null;
 let currentActiveCard = null;
@@ -46,10 +57,10 @@ songCards.forEach((card) => {
 		if (currentAudio && currentActiveCard === card) {
 			if (!currentAudio.paused) {
 				currentAudio.pause();
-				indicator.textContent = "▶";
+				indicator.innerHTML = PLAY_ICON;
 			} else {
 				currentAudio.play();
-				indicator.textContent = "⏸";
+				indicator.innerHTML = PAUSE_ICON;
 			}
 			return;
 		}
@@ -58,19 +69,19 @@ songCards.forEach((card) => {
 		if (currentAudio) {
 			currentAudio.pause();
 			if (currentActiveCard) {
-				currentActiveCard.querySelector(".play-indicator").textContent = "▶";
+				currentActiveCard.querySelector(".play-indicator").innerHTML = PLAY_ICON;
 			}
 		}
 
 		// Case 3: Start new audio
 		currentAudio = new Audio(previewUrl);
 		currentActiveCard = card;
-		indicator.textContent = "⏸";
+		indicator.innerHTML = PAUSE_ICON;
 		currentAudio.play();
 
 		// Reset button icon when track finishes 30-second duration
 		currentAudio.addEventListener("ended", () => {
-			indicator.textContent = "▶";
+			indicator.innerHTML = PLAY_ICON;
 			currentAudio = null;
 			currentActiveCard = null;
 		});
