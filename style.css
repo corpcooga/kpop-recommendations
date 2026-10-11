@@ -15,7 +15,6 @@ main {
 	flex: 1;
 }
 
-/* TODO fix color scheme */
 /* header and footer colors */
 header, footer {
 	color: aliceblue;
@@ -57,7 +56,7 @@ header {
 
 	.site-title {
 		justify-content: center;
-		margin: 0.8rem 0 0.2rem 0;
+		margin: 100rem 0 0.2rem 0;
 	}
 }
 
@@ -74,8 +73,8 @@ header {
 .nav-links a {
 	color: rgba(255, 255, 255, 0.8);
 	font-weight: 500;
-	padding: 2rem 0.8rem;
 	display: flex;
+	padding: 1rem 0.8rem;
 	transition: 0.2s ease;
 }
 
@@ -111,6 +110,7 @@ header {
 .site-title {
 	display: flex;
 	align-items: center;
+	margin: 0;
 }
 
 /* main title styling */
@@ -201,7 +201,7 @@ a {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	background: #fdfdfd;
+	background: white;
 	border-radius: 20px;
 	border: 1px solid lightgray;
 	padding: 1rem;
@@ -218,7 +218,6 @@ a {
 	transform: translateY(-2px);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 	border-color: #cbd5e1;
-	background: white;
 }
 
 /* song cover art styling */
