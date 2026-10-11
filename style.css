@@ -72,6 +72,7 @@ header {
 	display: flex;
 	align-items: center;
 	margin: 0;
+	transition: 0.2s ease;
 }
 
 /* main title styling */
@@ -323,22 +324,28 @@ input[type=submit]:hover {
 
 /* mobile styling */
 @media screen and (max-width: 768px) {
-	/* TODO fix */
 	/* stack header elements vertically on small screens */
 	header {
-		--header-y: 0px;
-		transform: translateY(var(--header-y));
 		flex-direction: column;
 		text-align: center;
-		padding: 0;
-		will-change: transform;
 		transition: 0.2s ease;
 	}
 
-	/* Slides header off-screen when scrolling down */
-	header.nav-hidden {
-		transform: translateY(-100%);
-		box-shadow: none;
+	/* when collapsed, the whole header acts as button to expand */
+	header.collapsed {
+		cursor: pointer;
+	}
+
+	header.collapsed .site-title {
+		margin: 0;
+		padding: 0.5rem 0;
+	}
+
+	/* shrink text when collapsed */
+	header.collapsed .site-title a {
+		font-size: 1.15rem;
+		pointer-events: none;
+		transform: none !important;
 	}
 
 	/* title centering and spacing */
@@ -353,14 +360,24 @@ input[type=submit]:hover {
 		grid-template-columns: repeat(4, 1fr);
 		font-size: 1rem;
 		padding: 0 0.5rem;
+		max-height: 60px;
+		opacity: 1;
 		margin: 0 0 0.5rem 0;
+		transition: 0.2s ease;
 	}
 
 	.nav-links a {
-		display: flex;
-		padding: 0.6rem 0;
 		display: block;
+		padding: 0.6rem 0;
 		border-radius: 100px;
+	}
+
+	/* hide and disable links when collapsed */
+	header.collapsed .nav-links {
+		max-height: 0;
+		opacity: 0;
+		margin: 0;
+		pointer-events: none;
 	}
 
 	/* grid layout becomes one column on smaller screens */

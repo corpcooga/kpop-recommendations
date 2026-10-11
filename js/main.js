@@ -31,87 +31,40 @@ navLinks.forEach((link) => {
 	}
 });
 
+// mobile menu bar header behavior
 const header = document.querySelector("header");
-
 let lastScrollY = window.scrollY;
-let currentTranslate = 0;
-let headerHeight = header.offsetHeight;
-let isTicking = false;
-let scrollTimeout = null;
+let isExpanding = false;
 
-// Keeps header visible and recalculates dimensions on screen resize
-window.addEventListener("resize", () => {
-	headerHeight = header.offsetHeight;
-	lastScrollY = window.scrollY;
-
-	// Reset all mobile hide states so resizing never hides the bar
-	currentTranslate = 0;
-	header.classList.remove("nav-hidden", "is-scrolling");
-	header.style.setProperty("--header-y", "0px");
-});
-
-function snapHeader() {
-	// Re-enable CSS transitions by removing .is-scrolling first
-	header.classList.remove("is-scrolling");
+function handleScroll() {
+	if (isExpanding) return; // ignore layout shifts caused by expanding
 
 	const currentScrollY = window.scrollY;
 
-	// If the user stopped scrolling near the top, CSS smoothly slides it in to 0px
-	if (currentScrollY <= headerHeight) {
-		header.classList.remove("nav-hidden");
-		currentTranslate = 0;
-		header.style.setProperty("--header-y", "0px");
-		return;
+	// 1. Scrolled to top -> reveal
+	if (currentScrollY <= 0) {
+		header.classList.remove("collapsed");
 	}
-
-	// Normal threshold snap when further down the page
-	if (Math.abs(currentTranslate) > headerHeight * 0.4) {
-		header.classList.add("nav-hidden");
-		currentTranslate = -headerHeight;
-	} else {
-		header.classList.remove("nav-hidden");
-		currentTranslate = 0;
-		header.style.setProperty("--header-y", "0px");
+	// 2. Scrolling down past 20px -> collapse
+	else if (currentScrollY > lastScrollY && currentScrollY > 20) {
+		header.classList.add("collapsed");
 	}
-}
-
-const SCROLL_THRESHOLD = 8; // Ignores tiny browser bar jitter
-const MAX_DELTA_STEP = 25;  // Prevents address bar expansion from flinging the menu open
-
-window.addEventListener("scroll", () => {
-	if (window.innerWidth > 768) return;
-
-	const currentScrollY = window.scrollY;
-	let delta = currentScrollY - lastScrollY;
-	
-	// Ignore microscopic twitch scrolls and browser chrome jitter
-	if (Math.abs(delta) < SCROLL_THRESHOLD && currentScrollY > 0)
-		return;
 
 	lastScrollY = currentScrollY;
+}
 
-	// Cap large sudden delta spikes caused by the Chrome address bar expanding
-	const clampedDelta = Math.max(-MAX_DELTA_STEP, Math.min(MAX_DELTA_STEP, delta));
+window.addEventListener("scroll", handleScroll, { passive: true });
 
-	header.classList.add("is-scrolling");
-	header.classList.remove("nav-hidden");
+// Click header to reveal items when collapsed
+header.addEventListener("click", () => {
+	if (header.classList.contains("collapsed")) {
+		header.classList.remove("collapsed");
+		isExpanding = true;
 
-	// Prevent gap: lock fully visible if within the top region of the page
-	if (currentScrollY <= 0) {
-		currentTranslate = 0;
-	} else {
-		currentTranslate = Math.min(0, Math.max(-headerHeight, currentTranslate - clampedDelta));
+		// Wait for the CSS transition to finish before listening to scroll again
+		setTimeout(() => {
+			isExpanding = false;
+			lastScrollY = window.scrollY;
+		}, 250);
 	}
-
-	if (!isTicking) {
-		window.requestAnimationFrame(() => {
-			header.style.setProperty("--header-y", `${currentTranslate}px`);
-			isTicking = false;
-		});
-		isTicking = true;
-	}
-
-	// Snap after user pauses in scrolling
-	clearTimeout(scrollTimeout);
-	scrollTimeout = setTimeout(snapHeader, 120);
-}, { passive: true });
+});
