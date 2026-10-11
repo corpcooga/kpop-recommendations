@@ -191,7 +191,7 @@ a:hover {
 	cursor: pointer;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 	transition: all 0.25s ease;
-	min-width: 0; /* prevents flex text overflows */
+	min-width: 0;
 	font-family: inherit;
 	text-align: left;
 	width: 100%;
@@ -221,6 +221,8 @@ a:hover {
 .song-info {
 	user-select: none;
 	flex-grow: 1;
+	min-width: 0;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -233,7 +235,7 @@ a:hover {
 	color: #1e293b;
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis; /*prevents long titles from breaking the card */
+	text-overflow: ellipsis;
 }
 
 .song-artist {
