@@ -75,16 +75,23 @@ function snapHeader() {
 	}
 }
 
+const SCROLL_THRESHOLD = 8; // Ignores tiny browser bar jitter
+const MAX_DELTA_STEP = 25;  // Prevents address bar expansion from flinging the menu open
+
 window.addEventListener("scroll", () => {
 	if (window.innerWidth > 768) return;
 
 	const currentScrollY = window.scrollY;
 	let delta = currentScrollY - lastScrollY;
+	
+	// Ignore microscopic twitch scrolls and browser chrome jitter
+	if (Math.abs(delta) < SCROLL_THRESHOLD && currentScrollY > 0)
+		return;
+
 	lastScrollY = currentScrollY;
 
-	// Make header reappear 1.5x faster when scrolling up
-	if (delta < 0)
-		delta *= 1.5;
+	// Cap large sudden delta spikes caused by the Chrome address bar expanding
+	const clampedDelta = Math.max(-MAX_DELTA_STEP, Math.min(MAX_DELTA_STEP, delta));
 
 	header.classList.add("is-scrolling");
 	header.classList.remove("nav-hidden");
@@ -93,7 +100,7 @@ window.addEventListener("scroll", () => {
 	if (currentScrollY <= 0) {
 		currentTranslate = 0;
 	} else {
-		currentTranslate = Math.min(0, Math.max(-headerHeight, currentTranslate - delta));
+		currentTranslate = Math.min(0, Math.max(-headerHeight, currentTranslate - clampedDelta));
 	}
 
 	if (!isTicking) {
@@ -104,7 +111,7 @@ window.addEventListener("scroll", () => {
 		isTicking = true;
 	}
 
-	// Snap after 100ms pause in scrolling
+	// Snap after user pauses in scrolling
 	clearTimeout(scrollTimeout);
-	scrollTimeout = setTimeout(snapHeader, 100);
+	scrollTimeout = setTimeout(snapHeader, 120);
 }, { passive: true });
