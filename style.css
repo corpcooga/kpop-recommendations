@@ -59,7 +59,7 @@ header {
 
 /* individual nav link styling */
 .nav-links a {
-	color: rgba(240, 248, 255, 0.75);
+	color: rgba(255, 255, 255, 0.8);
 	font-weight: 500;
 	padding: 2rem 0.8rem;
 	display: flex;
@@ -75,7 +75,8 @@ header {
 /* current page nav link styling */
 .nav-links a.active {
 	color: aliceblue;
-	font-weight: 700;
+	font-weight: 800;
+	opacity: 1;
 	pointer-events: none; /* disables clicking on the active link */
 	cursor: default; /* changes cursor to default arrow */
 }
@@ -98,11 +99,6 @@ header {
 	font-size: 1.5rem;
 	font-weight: bold;
 	letter-spacing: -0.02em;
-}
-
-/* main title hover styling */
-.site-title a:hover {
-	color: inherit;
 }
 
 /* content backing styling */
