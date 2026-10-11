@@ -33,17 +33,31 @@ header {
 	z-index: 1000;
 	display: flex;
 	justify-content: space-between;
-	align-items: center; /* center on opposite of current axis */
 	padding: 0 2rem;
 }
 
 /* stack header elements vertically on small screens */
 @media screen and (max-width: 768px) {
 	header {
+		--header-y: 0px;
+		transform: translateY(var(--header-y));
 		flex-direction: column;
 		align-items: stretch;
 		text-align: center;
 		padding: 0;
+		will-change: transform;
+		transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
+	}
+
+	/* While finger is actively scrolling, disable CSS transition for instant 1:1 response */
+	header.is-scrolling {
+		transition: none;
+	}
+
+	/* Slides header off-screen when scrolling down */
+	header.nav-hidden {
+		transform: translateY(-100%);
+		box-shadow: none;
 	}
 
 	.site-title {
