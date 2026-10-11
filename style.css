@@ -54,15 +54,16 @@ header {
 	display: flex;
 	margin: 0;
 	padding: 0;
+	letter-spacing: 0.02em;
 }
 
 /* individual nav link styling */
 .nav-links a {
-	color: aliceblue;
+	color: rgba(240, 248, 255, 0.75);
 	font-weight: 500;
 	padding: 2rem 0.8rem;
 	display: flex;
-	transition: background-color 0.3s ease, color 0.3s ease;
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* individual nav link hover styling */
@@ -73,6 +74,7 @@ header {
 
 /* current page nav link styling */
 .nav-links a.active {
+	color: aliceblue;
 	font-weight: 700;
 	pointer-events: none; /* disables clicking on the active link */
 	cursor: default; /* changes cursor to default arrow */
@@ -95,6 +97,7 @@ header {
 	color: inherit;
 	font-size: 1.5rem;
 	font-weight: bold;
+	letter-spacing: -0.02em;
 }
 
 /* main title hover styling */
