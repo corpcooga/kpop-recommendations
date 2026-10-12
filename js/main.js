@@ -68,3 +68,5 @@ header.addEventListener("click", () => {
 		}, 250);
 	}
 });
+
+document.addEventListener("touchstart", () => {}, { passive: true });

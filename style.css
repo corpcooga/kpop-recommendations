@@ -276,11 +276,11 @@ a {
 
 /* playlist cover icon */
 .playlist-cover {
-	width: 100%;
 	border-radius: 12px;
 	margin-bottom: 0.6rem;
 	user-select: none;
 	-webkit-user-drag: none;
+	transition: 0.2s ease;
 }
 
 .playlist-info {
@@ -356,8 +356,6 @@ input[type=submit]:hover {
 
 /* mobile styling */
 @media screen and (max-width: 768px) {
-
-	/* stack header elements vertically on small screens */
 	header {
 		flex-direction: column;
 		text-align: center;
@@ -424,5 +422,37 @@ input[type=submit]:hover {
 		grid-template-columns: repeat(1, 1fr);
 	}
 
-	/* TODO add playlist styling */
+	/* Disables sticky tap hover effect on touchscreen */
+	.song-card:hover {
+		transform: none;
+	}
+
+	.playlist-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* Disables sticky tap hover effect on touchscreen */
+	.playlist-card:hover {
+		transform: none;
+	}
+
+	/* tap-down active feedback */
+	.playlist-card:active {
+		transform: scale(0.97);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	/* dims the playlist cover slightly on tap */
+	.playlist-card:active .playlist-cover {
+		filter: brightness(0.9);
+	}
+
+	/* Make the title turn theme-colored on tap */
+	.playlist-card:active .playlist-title {
+		color: darkslateblue;
+	}
 }
+
+/* TODO make all hover effects into active effects in mobile mode */
+
+/* TODO add dark mode */
