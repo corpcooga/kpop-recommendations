@@ -325,7 +325,7 @@ input[type=submit] {
 	/* individual nav link hover styling */
 	.nav-links a:hover {
 		background-color: rgb(0, 0, 0, 0.2);
-		color: var(--purple-lightest);
+		color: var(--purple-light);
 	}
 
 	/* main title enlarges on hover */
@@ -335,7 +335,7 @@ input[type=submit] {
 
 	/* link hover color change */
 	.text-link:hover {
-		color: var(--lightestpurple);
+		color: var(--purple-lightest);
 	}
 
 	.song-card:hover {
