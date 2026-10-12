@@ -453,6 +453,7 @@ input[type=submit]:hover {
 	}
 }
 
-/* TODO make all hover effects into active effects in mobile mode */
+/* TODO change all hover effects into active effects in mobile mode
+	find out how to detect iphone vs low-width window on computer */
 
 /* TODO add dark mode */
