@@ -5,7 +5,8 @@ body {
 	line-height: 1.6;
 	background-color: whitesmoke;
 	margin: 0;
-	min-height: 100vh; /* ensures footer stays at the bottom */
+	min-height: 100vh;
+	/* ensures footer stays at the bottom */
 	display: flex;
 	flex-direction: column;
 }
@@ -16,7 +17,8 @@ main {
 }
 
 /* header and footer colors */
-header, footer {
+header,
+footer {
 	color: aliceblue;
 	/* semi-transparent gradient */
 	background: linear-gradient(to right, rgba(0, 0, 128, 0.9), rgba(72, 61, 139, 0.9));
@@ -63,8 +65,10 @@ header {
 .nav-links a.active {
 	color: aliceblue;
 	font-weight: 800;
-	pointer-events: none; /* disables clicking on the active link */
-	cursor: default; /* changes cursor to default arrow */
+	pointer-events: none;
+	/* disables clicking on the active link */
+	cursor: default;
+	/* changes cursor to default arrow */
 }
 
 /* centering main title vertically */
@@ -241,41 +245,68 @@ a {
 	margin: 0.5rem 0 1.5rem 0;
 }
 
-/* TODO fix playlist styling */
-/* playlist icon styling */
-.playlist-icon {
-	width: 120px;
-	height: 120px;
-	display: block;
+/* Grid layout of playlists */
+.playlist-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	margin: 0.6rem 0;
+}
+
+/* playlist card styling */
+.playlist-card {
+	display: flex;
+	flex-direction: column;
+	background: white;
 	border-radius: 20px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+	min-width: 0;
+	text-align: left;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+	border: 1px solid lightgray;
 	transition: 0.2s ease;
-	-webkit-user-drag: none;
+}
+
+/* card hover effect */
+.playlist-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	border-color: #cbd5e1;
+}
+
+/* playlist cover icon */
+.playlist-cover {
+	width: 100%;
+	border-radius: 12px;
+	margin-bottom: 0.6rem;
 	user-select: none;
+	-webkit-user-drag: none;
 }
 
-/* playlist icon hover animations */
-.playlist-icon:hover {
-	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-	transform: scale(1.03);
+.playlist-info {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	gap: 0;
+	margin-left: 0.3rem;
 }
 
-/* playlist table styling */
-table {
-	border-collapse: collapse;
-	margin: 1rem auto 0rem auto;
+.playlist-title {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: black;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-/* table border and spacing */
-td {
-	border-top: 1px solid lightgray;
-	padding: 1.5rem 0.5rem;
-}
-
-/* playlist names size */
-td h3 {
-	margin: 0 0 0.4rem 0;
-	font-size: 1.4rem;
+.playlist-description {
+	font-size: 1rem;
+	font-weight: 500;
+	color: slategray;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* footer styling */
@@ -318,12 +349,14 @@ input[type=submit] {
 
 /* submit button hover effect */
 input[type=submit]:hover {
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
-	background-position: right; /* slides the background */
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+	background-position: right;
+	/* slides the background */
 }
 
 /* mobile styling */
 @media screen and (max-width: 768px) {
+
 	/* stack header elements vertically on small screens */
 	header {
 		flex-direction: column;
@@ -390,4 +423,6 @@ input[type=submit]:hover {
 	.song-grid {
 		grid-template-columns: repeat(1, 1fr);
 	}
+
+	/* TODO add playlist styling */
 }

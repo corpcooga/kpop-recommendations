@@ -52,63 +52,51 @@
 		<section>
 			<h2>My Kpop Playlists</h2>
 			<p id="playlist-description">Click on the icon to view the playlist (Note: not all Kpop)</p>
-			<!-- table for sorting the playlists -->
-			<table style="width: 100%">
-				<tr>
-					<td>
-						<a href="https://music.apple.com/us/playlist/dopamine/pl.u-pMyl1Kmu4rboPlb" target="_blank" rel="noopener noreferrer"><img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/4d/1d/7c/4d1d7c76-9d9b-64a0-3e4e-f1a5cc92c19e/image/200x200cc.webp" alt="dopamine playlist" class="playlist-icon"></a>
-					</td>
-					<td>
-						<h3>Dopamine</h3>
-						<p>My favorite songs right now</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="https://music.apple.com/us/playlist/serotonin/pl.u-pMyl1mMc4rboPlb" target="_blank rel="noopener noreferrer""><img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/21/7a/08/217a0889-9054-43c9-5c90-3e0a37ac7ae7/image/200x200cc.webp" alt="serotonin playlist" class="playlist-icon"></a>
-					</td>
-					<td>
-						<h3>Serotonin</h3>
-						<p>Songs to not show to non-Kpop listeners</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="https://music.apple.com/us/playlist/vibe/pl.u-MDAWkl3FW0Y97rY" target="_blank" rel="noopener noreferrer"><img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/9b/e3/9f/9be39f3d-be1d-e27a-b280-b314219f13db/image/200x200cc.webp" alt="vibe playlist" class="playlist-icon"></a>
-					</td>
-					<td>
-						<h3>Vibe</h3>
-						<p>Kind of upbeat songs</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="https://music.apple.com/us/playlist/chill/pl.u-4JomaBlsa37z957" target="_blank" rel="noopener noreferrer"><img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/eb/b9/e3/ebb9e3ce-d7c5-7e82-bb96-0d7914cced01/image/200x200cc.webp" alt="chill playlist" class="playlist-icon"></a>
-					</td>
-					<td>
-						<h3>Chill</h3>
-						<p>Songs to relax to</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="https://music.apple.com/us/playlist/masterpiece/pl.u-r2yB1lBTPYb5W8b" target="_blank" rel="noopener noreferrer"><img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/35/d6/44/35d644fa-7423-431f-2100-f7ae48ae6a11/image/200x200cc.webp" alt="masterpiece playlist" class="playlist-icon"></a>
-					</td>
-					<td>
-						<h3>Masterpiece</h3>
-						<p>Songs with that "grand" feeling</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="https://music.apple.com/us/playlist/goat/pl.u-XkD0vRpCD87keq7" target="_blank" rel="noopener noreferrer"><img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/b7/99/02/b79902f5-9687-d725-2170-c6756c9a5938/image/200x200cc.webp" alt="goat playlist" class="playlist-icon"></a>
-					</td>
-					<td>
-						<h3>Goat</h3>
-						<p>My favorite songs of all time, in order</p>
-					</td>
-				</tr>
-			</table>
+			<!-- playlists grid -->
+			<div class="playlist-grid">
+				<a href="https://music.apple.com/us/playlist/dopamine/pl.u-pMyl1Kmu4rboPlb" target="_blank" rel="noopener noreferrer" class="playlist-card">
+					<img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/4d/1d/7c/4d1d7c76-9d9b-64a0-3e4e-f1a5cc92c19e/image/200x200cc.webp" alt="album art" class="playlist-cover">
+					<div class="playlist-info">
+						<span class="playlist-title">Dopamine</span>
+						<span class="playlist-description">My current favorites</span>
+					</div>
+				</a>
+				<a href="https://music.apple.com/us/playlist/serotonin/pl.u-pMyl1mMc4rboPlb" target="_blank" rel="noopener noreferrer" class="playlist-card">
+					<img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/21/7a/08/217a0889-9054-43c9-5c90-3e0a37ac7ae7/image/200x200cc.webp" alt="album art" class="playlist-cover">
+					<div class="playlist-info">
+						<span class="playlist-title">Serotonin</span>
+						<span class="playlist-description">Feel-good</span>
+					</div>
+				</a>
+				<a href="https://music.apple.com/us/playlist/vibe/pl.u-MDAWkl3FW0Y97rY" target="_blank" rel="noopener noreferrer" class="playlist-card">
+					<img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/9b/e3/9f/9be39f3d-be1d-e27a-b280-b314219f13db/image/200x200cc.webp" alt="album art" class="playlist-cover">
+					<div class="playlist-info">
+						<span class="playlist-title">Vibe</span>
+						<span class="playlist-description">Upbeat/hype</span>
+					</div>
+				</a>
+				<a href="https://music.apple.com/us/playlist/chill/pl.u-4JomaBlsa37z957" target="_blank" rel="noopener noreferrer" class="playlist-card">
+					<img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/eb/b9/e3/ebb9e3ce-d7c5-7e82-bb96-0d7914cced01/image/200x200cc.webp" alt="album art" class="playlist-cover">
+					<div class="playlist-info">
+						<span class="playlist-title">Chill</span>
+						<span class="playlist-description">Relaxing</span>
+					</div>
+				</a>
+				<a href="https://music.apple.com/us/playlist/masterpiece/pl.u-r2yB1lBTPYb5W8b" target="_blank" rel="noopener noreferrer" class="playlist-card">
+					<img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/35/d6/44/35d644fa-7423-431f-2100-f7ae48ae6a11/image/200x200cc.webp" alt="album art" class="playlist-cover">
+					<div class="playlist-info">
+						<span class="playlist-title">Masterpiece</span>
+						<span class="playlist-description">Grand/emotional</span>
+					</div>
+				</a>
+				<a href="https://music.apple.com/us/playlist/goat/pl.u-XkD0vRpCD87keq7" target="_blank" rel="noopener noreferrer" class="playlist-card">
+					<img src="https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/b7/99/02/b79902f5-9687-d725-2170-c6756c9a5938/image/200x200cc.webp" alt="album art" class="playlist-cover">
+					<div class="playlist-info">
+						<span class="playlist-title">GOAT</span>
+						<span class="playlist-description">My all-time favorites</span>
+					</div>
+				</a>
+			</div>
 		</section>
 	</main>
 	<footer>
