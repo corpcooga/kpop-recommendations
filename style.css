@@ -1,3 +1,10 @@
+:root {
+	--darkpurple: #351e7b;
+	--mediumpurple: #5333a8;
+	--lightpurple: #7d6eed;
+	--lightestpurple: #c4b4e3;
+}
+
 body {
 	font-family: 'Inter', sans-serif;
 	font-size: 16px;
@@ -17,21 +24,37 @@ main {
 
 header,
 footer {
-	color: aliceblue;
-	/* semi-transparent gradient */
-	background: linear-gradient(to right, rgba(0, 0, 128, 0.95), rgba(72, 61, 139, 0.95));
-	backdrop-filter: blur(2px);
-	-webkit-backdrop-filter: blur(2px);
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	display: flex;
+	color: white;
+	background: linear-gradient(to right,
+			color-mix(in srgb, var(--darkpurple) 85%, transparent),
+			color-mix(in srgb, var(--mediumpurple) 85%, transparent));
+	backdrop-filter: blur(14px) saturate(180%);
+	-webkit-backdrop-filter: blur(14px) saturate(180%);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow: 
+		inset 0 1px 0 rgba(255, 255, 255, 0.4),          /* top rim glass reflection */
+		0 1px 2px rgba(0, 0, 0, 0.1),                     /* subtle crisp edge contrast */
+		0 8px 30px -4px rgba(125, 110, 237, 0.45);
 }
 
 header {
 	position: sticky;
 	top: 0;
 	z-index: 1000;
-	display: flex;
 	justify-content: space-between;
 	padding: 0 2rem;
+}
+
+/* footer styling */
+footer {
+	display: flex;
+	justify-content: center;
+	border-bottom: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.35);
+	box-shadow: 
+		inset 0 -1px 0 rgba(255, 255, 255, 0.4),
+		0 -8px 30px -4px rgba(125, 110, 237, 0.35);
 }
 
 /* nav link formatting and styling */
@@ -45,7 +68,7 @@ header {
 
 /* individual nav link styling */
 .nav-links a {
-	color: rgba(255, 255, 255, 0.8);
+	color: whitesmoke;
 	font-weight: 500;
 	display: flex;
 	padding: 1.2rem 0.8rem;
@@ -54,12 +77,10 @@ header {
 
 /* current page nav link styling */
 .nav-links a.active {
-	color: aliceblue;
+	color: white;
 	font-weight: 800;
 	pointer-events: none;
-	/* disables clicking on the active link */
 	cursor: default;
-	/* changes cursor to default arrow */
 }
 
 /* centering main title vertically */
@@ -95,7 +116,7 @@ section {
 /* section heading styling */
 h2 {
 	font-size: 1.6rem;
-	color: darkslateblue;
+	color: var(--mediumpurple);
 	border-bottom: 2px solid whitesmoke;
 	text-align: center;
 	padding-bottom: 0.5rem;
@@ -109,13 +130,6 @@ h2 {
 	font-weight: bold;
 }
 
-/* home page alternate navigation message styling */
-#getstarted {
-	text-align: center;
-	font-size: 1.2rem;
-	font-weight: bold;
-}
-
 /* remove underline from links */
 a {
 	text-decoration: none;
@@ -123,7 +137,7 @@ a {
 
 /* link styling */
 .text-link {
-	color: lightskyblue;
+	color: var(--lightpurple);
 	transition: 0.2s ease;
 }
 
@@ -194,7 +208,7 @@ a {
 	width: 40px;
 	height: 40px;
 	background-color: whitesmoke;
-	color: slateblue;
+	color: var(--mediumpurple);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -203,15 +217,7 @@ a {
 	transition: 0.2s ease;
 }
 
-/* playlist section description styling */
-#playlist-description {
-	text-align: center;
-	font-size: 1.2rem;
-	font-weight: bold;
-	margin: 0.5rem 0 1.5rem 0;
-}
-
-/* Grid layout of playlists */
+/* grid layout of playlists */
 .playlist-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -219,7 +225,6 @@ a {
 	margin: 0.6rem 0;
 }
 
-/* playlist card styling */
 .playlist-card {
 	display: flex;
 	flex-direction: column;
@@ -233,7 +238,6 @@ a {
 	transition: 0.2s ease;
 }
 
-/* playlist cover icon */
 .playlist-cover {
 	border-radius: 12px;
 	margin-bottom: 0.6rem;
@@ -267,11 +271,19 @@ a {
 	text-overflow: ellipsis;
 }
 
-/* footer styling */
-footer {
+/* home page alternate navigation message styling */
+#getstarted {
 	text-align: center;
-	padding: 0.5rem;
-	box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* playlist section description styling */
+#playlist-description {
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin: 0.5rem 0 1.5rem 0;
 }
 
 /* message box styling */
@@ -287,8 +299,8 @@ input[type=text] {
 
 /* submit button styling */
 input[type=submit] {
-	background: linear-gradient(to right, navy, darkslateblue);
-	color: aliceblue;
+	background: linear-gradient(to right, var(--darkpurple), var(--mediumpurple));
+	color: white;
 	background-size: 400%;
 	padding: 1rem;
 	margin: 1rem 0;
@@ -305,7 +317,7 @@ input[type=submit] {
 	/* individual nav link hover styling */
 	.nav-links a:hover {
 		background-color: rgb(0, 0, 0, 0.2);
-		color: mediumslateblue;
+		color: var(--lightpurple);
 	}
 
 	/* main title enlarges on hover */
@@ -315,18 +327,17 @@ input[type=submit] {
 
 	/* link hover color change */
 	.text-link:hover {
-		color: lightsteelblue;
+		color: var(--lightestpurple);
 	}
 
 	.song-card:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-		border-color: #cbd5e1;
 	}
 
 	/* play button reaction when card is hovered */
 	.song-card:hover .play-indicator {
-		background-color: slateblue;
+		background-color: var(--mediumpurple);
 		color: whitesmoke;
 		transform: scale(1.08);
 	}
@@ -334,7 +345,6 @@ input[type=submit] {
 	.playlist-card:hover {
 		transform: translateY(-8px);
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-		border-color: #cbd5e1;
 	}
 
 	input[type=submit]:hover {
@@ -357,7 +367,7 @@ input[type=submit] {
 }
 
 .text-link:active {
-	color: lightsteelblue;
+	color: var(--lightpurple);
 }
 
 /* Submit button depression */
