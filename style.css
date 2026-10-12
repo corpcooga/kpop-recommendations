@@ -1,15 +1,21 @@
 :root {
-	--darkpurple: #351e7b;
-	--mediumpurple: #5333a8;
-	--lightpurple: #7d6eed;
-	--lightestpurple: #c4b4e3;
+	--purple-dark: #351e7b;
+	--purple-mid: #5333a8;
+	--purple-light: #7d6eed;
+	--purple-lightest: #c4b4e3;
+
+	--white: white;
+	--white-smoke: whitesmoke;
+	--light-gray: lightgray;
+	--slate-gray: slategray;
+	--black: black;
 }
 
 body {
 	font-family: 'Inter', sans-serif;
 	font-size: 16px;
 	line-height: 1.6;
-	background-color: whitesmoke;
+	background-color: var(--white-smoke);
 	margin: 0;
 	min-height: 100vh;
 	/* ensures footer stays at the bottom */
@@ -25,16 +31,18 @@ main {
 header,
 footer {
 	display: flex;
-	color: white;
+	color: var(--white);
 	background: linear-gradient(to right,
-			color-mix(in srgb, var(--darkpurple) 85%, transparent),
-			color-mix(in srgb, var(--mediumpurple) 85%, transparent));
+			color-mix(in srgb, var(--purple-dark) 85%, transparent),
+			color-mix(in srgb, var(--purple-mid) 85%, transparent));
 	backdrop-filter: blur(14px) saturate(180%);
 	-webkit-backdrop-filter: blur(14px) saturate(180%);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-	box-shadow: 
-		inset 0 1px 0 rgba(255, 255, 255, 0.4),          /* top rim glass reflection */
-		0 1px 2px rgba(0, 0, 0, 0.1),                     /* subtle crisp edge contrast */
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.4),
+		/* top rim glass reflection */
+		0 1px 2px rgba(0, 0, 0, 0.1),
+		/* subtle crisp edge contrast */
 		0 8px 30px -4px rgba(125, 110, 237, 0.45);
 }
 
@@ -52,7 +60,7 @@ footer {
 	justify-content: center;
 	border-bottom: none;
 	border-top: 1px solid rgba(255, 255, 255, 0.35);
-	box-shadow: 
+	box-shadow:
 		inset 0 -1px 0 rgba(255, 255, 255, 0.4),
 		0 -8px 30px -4px rgba(125, 110, 237, 0.35);
 }
@@ -68,7 +76,7 @@ footer {
 
 /* individual nav link styling */
 .nav-links a {
-	color: whitesmoke;
+	color: var(--white-smoke);
 	font-weight: 500;
 	display: flex;
 	padding: 1.2rem 0.8rem;
@@ -77,7 +85,7 @@ footer {
 
 /* current page nav link styling */
 .nav-links a.active {
-	color: white;
+	color: var(--white);
 	font-weight: 800;
 	pointer-events: none;
 	cursor: default;
@@ -102,9 +110,9 @@ footer {
 /* content backing styling */
 section {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	background-color: white;
-	border: 1px solid lightgray;
-	color: black;
+	background-color: var(--white);
+	border: 1px solid var(--light-gray);
+	color: var(--black);
 	padding: 1.2rem 1.6rem;
 	border-radius: 20px;
 	box-sizing: border-box;
@@ -116,8 +124,8 @@ section {
 /* section heading styling */
 h2 {
 	font-size: 1.6rem;
-	color: var(--mediumpurple);
-	border-bottom: 2px solid whitesmoke;
+	color: var(--purple-mid);
+	border-bottom: 2px solid var(--white-smoke);
 	text-align: center;
 	padding-bottom: 0.5rem;
 	margin-bottom: 1rem;
@@ -137,7 +145,7 @@ a {
 
 /* link styling */
 .text-link {
-	color: var(--lightpurple);
+	color: var(--purple-light);
 	transition: 0.2s ease;
 }
 
@@ -154,7 +162,7 @@ a {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	background: white;
+	background: var(--white);
 	border-radius: 20px;
 	padding: 1rem;
 	cursor: pointer;
@@ -162,7 +170,7 @@ a {
 	font-family: inherit;
 	text-align: left;
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-	border: 1px solid lightgray;
+	border: 1px solid var(--light-gray);
 	transition: 0.2s ease;
 }
 
@@ -188,7 +196,7 @@ a {
 .song-title {
 	font-size: 1.05rem;
 	font-weight: 700;
-	color: black;
+	color: var(--black);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -197,7 +205,7 @@ a {
 .song-artist {
 	font-size: 0.9rem;
 	font-weight: 500;
-	color: slategray;
+	color: var(--slate-gray);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -207,8 +215,8 @@ a {
 .play-indicator {
 	width: 40px;
 	height: 40px;
-	background-color: whitesmoke;
-	color: var(--mediumpurple);
+	background-color: var(--white-smoke);
+	color: var(--purple-mid);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -228,13 +236,13 @@ a {
 .playlist-card {
 	display: flex;
 	flex-direction: column;
-	background: white;
+	background: var(--white);
 	border-radius: 20px;
 	padding: 1rem;
 	min-width: 0;
 	text-align: left;
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-	border: 1px solid lightgray;
+	border: 1px solid var(--light-gray);
 	transition: 0.2s ease;
 }
 
@@ -256,7 +264,7 @@ a {
 .playlist-title {
 	font-size: 1.2rem;
 	font-weight: 700;
-	color: black;
+	color: var(--black);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -265,7 +273,7 @@ a {
 .playlist-description {
 	font-size: 1rem;
 	font-weight: 500;
-	color: slategray;
+	color: var(--slate-gray);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -292,15 +300,15 @@ input[type=text] {
 	box-sizing: border-box;
 	width: 100%;
 	padding: 1rem;
-	border: 1px solid lightgray;
+	border: 1px solid var(--light-gray);
 	border-radius: 2rem;
 	outline: none;
 }
 
 /* submit button styling */
 input[type=submit] {
-	background: linear-gradient(to right, var(--darkpurple), var(--mediumpurple));
-	color: white;
+	background: linear-gradient(to right, var(--purple-dark), var(--purple-mid));
+	color: var(--white);
 	background-size: 400%;
 	padding: 1rem;
 	margin: 1rem 0;
@@ -317,7 +325,7 @@ input[type=submit] {
 	/* individual nav link hover styling */
 	.nav-links a:hover {
 		background-color: rgb(0, 0, 0, 0.2);
-		color: var(--lightpurple);
+		color: var(--purple-lightest);
 	}
 
 	/* main title enlarges on hover */
@@ -337,8 +345,8 @@ input[type=submit] {
 
 	/* play button reaction when card is hovered */
 	.song-card:hover .play-indicator {
-		background-color: var(--mediumpurple);
-		color: whitesmoke;
+		background-color: var(--purple-mid);
+		color: var(--white-smoke);
 		transform: scale(1.08);
 	}
 
@@ -367,7 +375,7 @@ input[type=submit] {
 }
 
 .text-link:active {
-	color: var(--lightpurple);
+	color: var(--purple-light);
 }
 
 /* Submit button depression */
