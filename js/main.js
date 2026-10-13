@@ -43,7 +43,7 @@ const SCROLL_DELTA = 10; // Must scroll at least delta pixels in one direction t
 function handleScroll() {
 	if (isExpanding) return; // ignore layout shifts caused by expanding
 
-	// prevents negative bounce values on iOS/Safari
+	// prevents negative bounce values
 	const currentScrollY = Math.max(0, window.scrollY);
 	const scrollDiff = currentScrollY - lastScrollY;
 
@@ -52,8 +52,15 @@ function handleScroll() {
 		header.classList.remove("collapsed");
 	}
 	// 2. Scrolling down past threshold by a deliberate amount -> commit to collapse
-	else if (scrollDiff > SCROLL_DELTA && currentScrollY > COLLAPSE_THRESHOLD) {
-		header.classList.add("collapsed");
+	else if (currentScrollY > COLLAPSE_THRESHOLD && scrollDiff > SCROLL_DELTA) {
+		if (!header.classList.contains("collapsed")) {
+			header.classList.add("collapsed");
+			isExpanding = true;
+			setTimeout(() => {
+				isExpanding = false;
+				lastScrollY = Math.max(0, window.scrollY);
+			}, 250);
+		}
 	}
 	// 3. Deliberately scrolling up by at least delta -> reveal
 	else if (scrollDiff < -SCROLL_DELTA) {
@@ -67,19 +74,7 @@ window.addEventListener("scroll", handleScroll, { passive: true });
 
 // Click header to reveal items when collapsed
 header.addEventListener("click", () => {
-	if (header.classList.contains("collapsed")) {
-		header.classList.remove("collapsed");
-		isExpanding = true;
-		setTimeout(() => {
-			isExpanding = false;
-		}, 250);
-
-		// Wait for the CSS transition to finish before listening to scroll again
-		setTimeout(() => {
-			isExpanding = false;
-			lastScrollY = window.scrollY;
-		}, 250);
-	}
+	header.classList.remove("collapsed");
 });
 
 document.addEventListener("touchstart", () => { }, { passive: true });
