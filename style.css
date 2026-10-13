@@ -293,6 +293,69 @@ a {
 	transition: 0.2s ease;
 }
 
+/* TODO make equalizer persiste when mouse is off */
+/* container positioned inside the play indicator */
+.equalizer {
+	position: absolute;
+	top: 50%;
+	left: calc(1rem + 45px);
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	gap: 3px;
+	width: 28px;
+	height: 28px;
+	padding: 6px;
+	background: rgba(0, 0, 0, 0.55);
+	backdrop-filter: blur(4px);
+	border-radius: 50%;
+	z-index: 5;
+	pointer-events: none;
+}
+
+/* Individual equalizer bars */
+.equalizer span {
+	width: 3px;
+	height: 100%;
+	background-color: var(--white);
+	border-radius: 1px;
+	transform-origin: bottom;
+	animation: eq-bounce 0.8s ease-in-out infinite alternate;
+}
+
+/* Stagger each bar's animation */
+.equalizer span:nth-child(1) {
+	animation-duration: 0.65s;
+}
+
+.equalizer span:nth-child(2) {
+	animation-duration: 0.45s;
+}
+
+.equalizer span:nth-child(3) {
+	animation-duration: 0.75s;
+}
+
+.equalizer span:nth-child(4) {
+	animation-duration: 0.55s;
+}
+
+/* Freeze the bars when playback is paused */
+.equalizer.is-paused span {
+	animation-play-state: paused;
+}
+
+@keyframes eq-bounce {
+	0% {
+		transform: scaleY(0.2);
+	}
+
+	100% {
+		transform: scaleY(1);
+	}
+}
+
 /* home page alternate navigation message styling */
 #getstarted {
 	text-align: center;
