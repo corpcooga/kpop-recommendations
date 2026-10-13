@@ -38,7 +38,7 @@ let isExpanding = false;
 
 // Buffer constants to stop micro-jitter
 const COLLAPSE_THRESHOLD = 50; // Must scroll down past threshold before collapsing starts
-const SCROLL_DELTA = 40; // Must scroll at least delta pixels in one direction to trigger
+const SCROLL_DELTA = 10; // Must scroll at least delta pixels in one direction to trigger
 
 function handleScroll() {
 	if (isExpanding) return; // ignore layout shifts caused by expanding
