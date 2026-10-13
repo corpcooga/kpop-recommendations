@@ -70,6 +70,9 @@ header.addEventListener("click", () => {
 	if (header.classList.contains("collapsed")) {
 		header.classList.remove("collapsed");
 		isExpanding = true;
+		setTimeout(() => {
+			isExpanding = false;
+		}, 250);
 
 		// Wait for the CSS transition to finish before listening to scroll again
 		setTimeout(() => {

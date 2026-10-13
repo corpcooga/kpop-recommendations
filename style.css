@@ -17,8 +17,8 @@ body {
 	line-height: 1.6;
 	background-color: var(--white-smoke);
 	margin: 0;
-	min-height: 100vh;
-	/* ensures footer stays at the bottom */
+	min-height: 100dvh;
+	overscroll-behavior-y: none;
 	display: flex;
 	flex-direction: column;
 }
@@ -494,8 +494,6 @@ input[type="submit"]:active {
 /* TODO make play button dark when playing instead of hover effect */
 
 /* TODO make nav menu fit on mobile screen horizontally */
-
-/* TODO fix infinite collapse/uncollapse loop */
 
 /* TODO add dark mode */
 
