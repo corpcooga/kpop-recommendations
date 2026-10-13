@@ -216,10 +216,9 @@ a {
 	-webkit-user-drag: none;
 }
 
-/* TODO experiment with sizes */
 .song-cover {
-	width: 84px;
-	height: 84px;
+	width: 90px;
+	height: 90px;
 }
 
 .playlist-cover {
@@ -392,6 +391,12 @@ input[type=submit] {
 	filter: brightness(0.9);
 }
 
+.song-card:active .play-indicator {
+	background-color: var(--purple-mid);
+	color: var(--white-smoke);
+	transform: scale(0.97);
+}
+
 .text-link:active {
 	color: var(--purple-light);
 }
@@ -462,7 +467,8 @@ input[type="submit"]:active {
 		opacity: 0;
 		margin: 0;
 		padding: 0;
-		border-color: transparent; /* Fades the 1px glass border cleanly */
+		border-color: transparent;
+		/* Fades the 1px glass border cleanly */
 		pointer-events: none;
 	}
 
