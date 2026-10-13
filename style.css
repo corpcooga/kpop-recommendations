@@ -377,7 +377,7 @@ input[type="submit"]:active {
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* mobile styling */
+/* smaller screen styling */
 @media screen and (max-width: 768px) {
 	header {
 		flex-direction: column;
@@ -451,6 +451,12 @@ input[type="submit"]:active {
 	}
 }
 
-/* TODO fix playlist text shortening on mobile by making layout have one playlist per row once screen is small enough */
+/* smallest screen styling */
+@media screen and (max-width: 480px) {
+	/* playlist grid layout becomes one column on smaller screens */
+	.playlist-grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
 
 /* TODO add dark mode */
