@@ -40,6 +40,14 @@ let isExpanding = false;
 const COLLAPSE_THRESHOLD = 50; // Must scroll down past threshold before collapsing starts
 const SCROLL_DELTA = 10; // Must scroll at least delta pixels in one direction to trigger
 
+function lockScrollTransition() {
+	isExpanding = true;
+	setTimeout(() => {
+		isExpanding = false;
+		lastScrollY = Math.max(0, window.scrollY);
+	}, 250);
+}
+
 function handleScroll() {
 	if (isExpanding) return; // ignore layout shifts caused by expanding
 
@@ -47,25 +55,18 @@ function handleScroll() {
 	const currentScrollY = Math.max(0, window.scrollY);
 	const scrollDiff = currentScrollY - lastScrollY;
 
-	// 1. Scrolled to top -> reveal
-	if (currentScrollY <= 10) {
-		header.classList.remove("collapsed");
-	}
-	// 2. Scrolling down past threshold by a deliberate amount -> commit to collapse
-	else if (currentScrollY > COLLAPSE_THRESHOLD && scrollDiff > SCROLL_DELTA) {
+	// reveal menu bar
+	if (currentScrollY <= 10 || scrollDiff < -SCROLL_DELTA)
+		if (header.classList.contains("collapsed")) {
+			header.classList.remove("collapsed");
+			lockScrollTransition();
+		}
+	// collapse menu bar
+	else if (currentScrollY > COLLAPSE_THRESHOLD && scrollDiff > SCROLL_DELTA)
 		if (!header.classList.contains("collapsed")) {
 			header.classList.add("collapsed");
-			isExpanding = true;
-			setTimeout(() => {
-				isExpanding = false;
-				lastScrollY = Math.max(0, window.scrollY);
-			}, 250);
+			lockScrollTransition();
 		}
-	}
-	// 3. Deliberately scrolling up by at least delta -> reveal
-	else if (scrollDiff < -SCROLL_DELTA) {
-		header.classList.remove("collapsed");
-	}
 
 	lastScrollY = currentScrollY;
 }
@@ -74,7 +75,10 @@ window.addEventListener("scroll", handleScroll, { passive: true });
 
 // Click header to reveal items when collapsed
 header.addEventListener("click", () => {
-	header.classList.remove("collapsed");
+	if (header.classList.contains("collapsed")) {
+			header.classList.remove("collapsed");
+			lockScrollTransition();
+	}
 });
 
 document.addEventListener("touchstart", () => { }, { passive: true });
