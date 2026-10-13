@@ -56,17 +56,18 @@ function handleScroll() {
 	const scrollDiff = currentScrollY - lastScrollY;
 
 	// reveal menu bar
-	if (currentScrollY <= 10 || scrollDiff < -SCROLL_DELTA)
+	if (currentScrollY <= 10 || scrollDiff < -SCROLL_DELTA) {
 		if (header.classList.contains("collapsed")) {
 			header.classList.remove("collapsed");
 			lockScrollTransition();
 		}
 	// collapse menu bar
-	else if (currentScrollY > COLLAPSE_THRESHOLD && scrollDiff > SCROLL_DELTA)
+	} else if (currentScrollY > COLLAPSE_THRESHOLD && scrollDiff > SCROLL_DELTA) {
 		if (!header.classList.contains("collapsed")) {
 			header.classList.add("collapsed");
 			lockScrollTransition();
 		}
+	}
 
 	lastScrollY = currentScrollY;
 }
