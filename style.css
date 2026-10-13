@@ -468,7 +468,6 @@ input[type="submit"]:active {
 		margin: 0;
 		padding: 0;
 		border-color: transparent;
-		/* Fades the 1px glass border cleanly */
 		pointer-events: none;
 	}
 
@@ -492,4 +491,10 @@ input[type="submit"]:active {
 	}
 }
 
+/* TODO make play button dark when playing instead of hover effect */
+
+/* TODO fix infinite collapse/uncollapse loop */
+
 /* TODO add dark mode */
+
+/* TODO update all other UI to be modern */
