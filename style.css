@@ -209,15 +209,17 @@ a {
 	flex-direction: column;
 }
 
-/* song and playlist cover art styling */
+/* song and playlist cover art styling + equalizer covering */
 .song-cover,
-.playlist-cover {
+.playlist-cover,
+.equalizer {
 	border-radius: 12px;
 	user-select: none;
 	-webkit-user-drag: none;
 }
 
-.song-cover {
+.song-cover,
+.equalizer {
 	width: 90px;
 	height: 90px;
 }
@@ -294,33 +296,30 @@ a {
 	transition: 0.2s ease;
 }
 
-/* TODO make equalizer persiste when mouse is off */
-/* container positioned inside the play indicator */
+/* container positioned inside the song cover */
 .equalizer {
 	position: absolute;
 	top: 50%;
 	left: calc(1rem + 45px);
 	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 27px;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
-	gap: 3px;
-	width: 28px;
-	height: 28px;
-	padding: 6px;
-	background: rgba(0, 0, 0, 0.55);
-	backdrop-filter: blur(4px);
-	border-radius: 50%;
+	gap: 2px;
+	background: rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(2px);
 	z-index: 5;
 	pointer-events: none;
 }
 
-/* Individual equalizer bars */
+/* individual equalizer bars */
 .equalizer span {
-	width: 3px;
+	flex: 1;
 	height: 100%;
 	background-color: var(--white);
-	border-radius: 1px;
+	border-radius: 999px;
 	transform-origin: bottom;
 	animation: eq-bounce 0.8s ease-in-out infinite alternate;
 }
@@ -349,11 +348,11 @@ a {
 
 @keyframes eq-bounce {
 	0% {
-		transform: scaleY(0.2);
+		height: 20%;
 	}
 
 	100% {
-		transform: scaleY(1);
+		height: 100%;
 	}
 }
 
