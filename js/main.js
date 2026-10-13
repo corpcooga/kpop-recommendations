@@ -36,18 +36,28 @@ const header = document.querySelector("header");
 let lastScrollY = window.scrollY;
 let isExpanding = false;
 
+// Buffer constants to stop micro-jitter
+const COLLAPSE_THRESHOLD = 50; // Must scroll down past threshold before collapsing starts
+const SCROLL_DELTA = 10; // Must scroll at least delta pixels in one direction to trigger
+
 function handleScroll() {
 	if (isExpanding) return; // ignore layout shifts caused by expanding
 
-	const currentScrollY = window.scrollY;
+	// prevents negative bounce values on iOS/Safari
+	const currentScrollY = Math.max(0, window.scrollY);
+	const scrollDiff = currentScrollY - lastScrollY;
 
 	// 1. Scrolled to top -> reveal
-	if (currentScrollY <= 0) {
+	if (currentScrollY <= 10) {
 		header.classList.remove("collapsed");
 	}
-	// 2. Scrolling down past 20px -> collapse
-	else if (currentScrollY > lastScrollY && currentScrollY > 20) {
+	// 2. Scrolling down past threshold by a deliberate amount -> commit to collapse
+	else if (scrollDiff > SCROLL_DELTA && currentScrollY > COLLAPSE_THRESHOLD) {
 		header.classList.add("collapsed");
+	}
+	// 3. Deliberately scrolling up by at least delta -> reveal
+	else if (scrollDiff < -SCROLL_DELTA) {
+		header.classList.remove("collapsed");
 	}
 
 	lastScrollY = currentScrollY;
@@ -69,4 +79,4 @@ header.addEventListener("click", () => {
 	}
 });
 
-document.addEventListener("touchstart", () => {}, { passive: true });
+document.addEventListener("touchstart", () => { }, { passive: true });
