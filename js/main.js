@@ -61,8 +61,9 @@ function handleScroll() {
 			header.classList.remove("collapsed");
 			lockScrollTransition();
 		}
+	}
 	// collapse menu bar
-	} else if (currentScrollY > COLLAPSE_THRESHOLD && scrollDiff > SCROLL_DELTA) {
+	else if (currentScrollY > COLLAPSE_THRESHOLD && scrollDiff > SCROLL_DELTA) {
 		if (!header.classList.contains("collapsed")) {
 			header.classList.add("collapsed");
 			lockScrollTransition();
@@ -77,8 +78,8 @@ window.addEventListener("scroll", handleScroll, { passive: true });
 // Click header to reveal items when collapsed
 header.addEventListener("click", () => {
 	if (header.classList.contains("collapsed")) {
-			header.classList.remove("collapsed");
-			lockScrollTransition();
+		header.classList.remove("collapsed");
+		lockScrollTransition();
 	}
 });
 
