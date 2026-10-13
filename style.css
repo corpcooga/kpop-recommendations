@@ -32,19 +32,14 @@ header,
 footer {
 	display: flex;
 	color: var(--white);
-	/* TODO experiment with 50% and lower */
 	background: linear-gradient(to right,
 			color-mix(in srgb, var(--purple-dark) 90%, transparent),
 			color-mix(in srgb, var(--purple-mid) 90%, transparent));
 	backdrop-filter: blur(14px) saturate(180%);
 	-webkit-backdrop-filter: blur(14px) saturate(180%);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 	box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, 0.4),
-		/* top rim glass reflection */
-		0 1px 2px rgba(0, 0, 0, 0.1),
-		/* subtle crisp edge contrast */
-		0 8px 30px -4px rgba(125, 110, 237, 0.45);
+		inset 0 0 10px rgba(255, 255, 255, 0.1),
+		0 0 30px rgba(125, 110, 237, 0.8);
 }
 
 header {
@@ -53,6 +48,7 @@ header {
 	z-index: 1000;
 	justify-content: space-between;
 	padding: 0 2rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 /* footer styling */
@@ -61,15 +57,12 @@ footer {
 	justify-content: center;
 	border-bottom: none;
 	border-top: 1px solid rgba(255, 255, 255, 0.35);
-	box-shadow:
-		inset 0 -1px 0 rgba(255, 255, 255, 0.4),
-		0 -8px 30px -4px rgba(125, 110, 237, 0.35);
 }
 
 /* nav link formatting and styling */
 .nav-links {
 	font-size: 1.2rem;
-	letter-spacing: -0.02em;
+	letter-spacing: -0.01em;
 	list-style: none;
 	display: flex;
 	margin: 0;
@@ -104,7 +97,7 @@ footer {
 	color: inherit;
 	font-size: 1.5rem;
 	font-weight: 700;
-	letter-spacing: -0.02em;
+	letter-spacing: -0.01em;
 	transition: 0.2s ease;
 }
 
@@ -151,7 +144,8 @@ a {
 }
 
 /* grid layout for song recs and playlists */
-.song-grid, .playlist-grid {
+.song-grid,
+.playlist-grid {
 	display: grid;
 	gap: 0.5rem;
 	margin: 0.6rem 0;
@@ -167,7 +161,8 @@ a {
 }
 
 /* song and playlist card styling */
-.song-card, .playlist-card {
+.song-card,
+.playlist-card {
 	display: flex;
 	background: var(--white);
 	border-radius: 20px;
@@ -191,7 +186,8 @@ a {
 }
 
 /* song and playlist cover art styling */
-.song-cover, .playlist-cover {
+.song-cover,
+.playlist-cover {
 	border-radius: 12px;
 	user-select: none;
 	-webkit-user-drag: none;
@@ -208,7 +204,8 @@ a {
 }
 
 /* song and playlist info container */
-.song-info, .playlist-info {
+.song-info,
+.playlist-info {
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
@@ -224,7 +221,8 @@ a {
 }
 
 /* song and playlist title styling */
-.song-title, .playlist-title {
+.song-title,
+.playlist-title {
 	font-weight: 700;
 	color: var(--black);
 	white-space: nowrap;
@@ -242,7 +240,8 @@ a {
 }
 
 /* song and playlist caption styling */
-.song-artist, .playlist-description {
+.song-artist,
+.playlist-description {
 	font-weight: 500;
 	color: var(--slate-gray);
 	white-space: nowrap;
@@ -453,6 +452,7 @@ input[type="submit"]:active {
 
 /* smallest screen styling */
 @media screen and (max-width: 480px) {
+
 	/* playlist grid layout becomes one column on smaller screens */
 	.playlist-grid {
 		grid-template-columns: repeat(1, 1fr);
