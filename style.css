@@ -297,6 +297,7 @@ a {
 	transition: 0.2s ease;
 }
 
+/* TODO fix equalizer bg jittering on start sometimes */
 /* container positioned over the song cover */
 .equalizer {
 	position: absolute;
@@ -426,11 +427,13 @@ input[type=submit] {
 		color: var(--purple-lightest);
 	}
 
+	/* TODO fix infinite hover loop jitter on song and playlist card */
 	.song-card:hover {
-		transform: translateY(-2px);
+		transform: translateY(-1px);
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 	}
 
+	/* TODO fix jitter on play indicator sometimes */
 	/* play button reaction when card is hovered */
 	.song-card:hover .play-indicator {
 		background-color: var(--purple-mid);
@@ -439,7 +442,7 @@ input[type=submit] {
 	}
 
 	.playlist-card:hover {
-		transform: translateY(-8px);
+		transform: translateY(-2px);
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 	}
 
@@ -562,6 +565,8 @@ input[type="submit"]:active {
 		grid-template-columns: repeat(1, 1fr);
 	}
 }
+
+/* TODO reduce padding/margin of sections mobile */
 
 /* TODO add dark mode */
 
