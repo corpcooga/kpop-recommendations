@@ -297,7 +297,6 @@ a {
 	transition: 0.2s ease;
 }
 
-/* TODO fix equalizer starting animation lagging on mobile */
 /* container positioned over the song cover */
 .equalizer {
 	position: absolute;
