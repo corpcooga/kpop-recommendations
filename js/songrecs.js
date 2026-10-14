@@ -15,16 +15,20 @@ equalizerEl.className = "equalizer";
 equalizerEl.innerHTML = "<span></span><span></span><span></span><span></span>";
 
 function showEqualizer(card) {
-	equalizerEl.remove(); // detach from any previous card
-	equalizerEl.classList.remove("is-paused");
-	card.appendChild(equalizerEl);
+	// If moving to a new card, attach it first
+	if (equalizerEl.parentElement !== card) {
+		card.appendChild(equalizerEl);
+		// Force browser to register the initial hidden state before transitioning in
+		void equalizerEl.offsetWidth;
+	}
+	equalizerEl.classList.add("is-active");
 }
 
-function pauseEqualizer() {
-	equalizerEl.classList.add("is-paused");
+function hideEqualizer() {
+	equalizerEl.classList.remove("is-active");
 }
 
-// Global audio controller
+// global audio controller
 let currentAudio = null;
 let currentActiveCard = null;
 
@@ -32,19 +36,18 @@ const songCards = document.querySelectorAll(".song-card");
 
 songCards.forEach((card) => {
 	card.addEventListener("click", () => {
-		const previewUrl = card.dataset.preview;
 		const indicator = card.querySelector(".play-indicator");
 
 		// toggling the currently playing card
 		if (currentAudio && currentActiveCard === card) {
 			if (!currentAudio.paused) {
 				currentAudio.pause();
+				hideEqualizer();
 				indicator.innerHTML = PLAY_ICON;
-				pauseEqualizer(); // freezes the bars in place
 			} else {
 				currentAudio.play();
-				indicator.innerHTML = PAUSE_ICON;
 				showEqualizer(card); // resumes bouncing
+				indicator.innerHTML = PAUSE_ICON;
 			}
 			return;
 		}
@@ -52,24 +55,22 @@ songCards.forEach((card) => {
 		// another song was already playing: pause and reset its icon
 		if (currentAudio) {
 			currentAudio.pause();
-			if (currentActiveCard) {
-				currentActiveCard.querySelector(".play-indicator").innerHTML = PLAY_ICON;
-				equalizerEl.remove();
-			}
+			hideEqualizer();
+			currentActiveCard.querySelector(".play-indicator").innerHTML = PLAY_ICON;
 		}
 
-		// start new audio
-		currentAudio = new Audio(previewUrl);
-		currentAudio.volume = 0.4;
 		currentActiveCard = card;
-		indicator.innerHTML = PAUSE_ICON;
-		showEqualizer(card); // injects equalizer into this card
-		currentAudio.play();
+		currentAudio = new Audio(card.dataset.preview);
+		currentAudio.volume = 0.4;
 
-		// Reset button icon when track finishes 30-second duration
+		currentAudio.play();
+		showEqualizer(card);
+		indicator.innerHTML = PAUSE_ICON;
+
+		// Reset button icon when track finishes
 		currentAudio.addEventListener("ended", () => {
+			hideEqualizer();
 			indicator.innerHTML = PLAY_ICON;
-			equalizerEl.remove();
 			currentAudio = null;
 			currentActiveCard = null;
 		});

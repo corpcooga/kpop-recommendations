@@ -296,7 +296,7 @@ a {
 	transition: 0.2s ease;
 }
 
-/* container positioned inside the song cover */
+/* container positioned over the song cover */
 .equalizer {
 	position: absolute;
 	top: 50%;
@@ -308,10 +308,20 @@ a {
 	align-items: flex-end;
 	justify-content: center;
 	gap: 2px;
-	background: rgba(0, 0, 0, 0.25);
-	backdrop-filter: blur(2px);
 	z-index: 5;
 	pointer-events: none;
+	opacity: 0;
+	background: rgba(0, 0, 0, 0);
+	backdrop-filter: blur(0px);
+	-webkit-backdrop-filter: blur(0px);
+	transition: 0.2s ease;
+}
+
+.equalizer.is-active {
+	opacity: 1;
+	background: rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
 }
 
 /* individual equalizer bars */
@@ -320,7 +330,6 @@ a {
 	height: 100%;
 	background-color: var(--white);
 	border-radius: 999px;
-	transform-origin: bottom;
 	animation: eq-bounce 0.8s ease-in-out infinite alternate;
 }
 
@@ -510,10 +519,10 @@ input[type="submit"]:active {
 	.nav-links {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		max-height: 60px;
 		opacity: 1;
-		margin: 0.5rem;
+		margin: 0.2rem;
 		overflow: hidden;
 		white-space: nowrap;
 		transition: 0.2s ease;
@@ -555,8 +564,6 @@ input[type="submit"]:active {
 }
 
 /* TODO make play button dark when playing instead of hover effect */
-
-/* TODO make nav menu fit on mobile screen horizontally */
 
 /* TODO add dark mode */
 
