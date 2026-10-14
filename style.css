@@ -304,17 +304,21 @@ a {
 	left: calc(1rem + 45px);
 	transform: translate(-50%, -50%);
 	box-sizing: border-box;
-	padding: 27px;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
+	padding: 28px;
 	gap: 2px;
 	pointer-events: none;
 	opacity: 0;
 	background: rgba(0, 0, 0, 0);
 	backdrop-filter: blur(0px);
 	-webkit-backdrop-filter: blur(0px);
-	transition: 0.2s ease;
+	transition:
+		opacity 0.2s ease,
+		background 0.2s ease,
+		backdrop-filter 0.2s ease,
+		-webkit-backdrop-filter 0.2s ease;
 }
 
 .equalizer.is-active {
@@ -326,11 +330,12 @@ a {
 
 /* individual equalizer bars */
 .equalizer span {
-	flex: 1;
+	width: 7px;
 	height: 100%;
 	background-color: var(--white);
-	border-radius: 10px 10px 6px 6px;
-	animation: eq-bounce 0.8s ease-in-out infinite alternate;
+	border-radius: 20px 20px 10px 10px;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+	animation: eq-bounce ease-in-out infinite alternate;
 }
 
 /* Stagger each bar's animation */
@@ -350,14 +355,9 @@ a {
 	animation-duration: 0.55s;
 }
 
-/* Freeze the bars when playback is paused */
-.equalizer.is-paused span {
-	animation-play-state: paused;
-}
-
 @keyframes eq-bounce {
 	0% {
-		height: 20%;
+		height: 30%;
 	}
 
 	100% {
