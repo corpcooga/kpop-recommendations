@@ -296,6 +296,7 @@ a {
 	transition: 0.2s ease;
 }
 
+/* TODO fix equalizer starting animation lagging on mobile */
 /* container positioned over the song cover */
 .equalizer {
 	position: absolute;
@@ -308,7 +309,6 @@ a {
 	align-items: flex-end;
 	justify-content: center;
 	gap: 2px;
-	z-index: 5;
 	pointer-events: none;
 	opacity: 0;
 	background: rgba(0, 0, 0, 0);
@@ -329,7 +329,7 @@ a {
 	flex: 1;
 	height: 100%;
 	background-color: var(--white);
-	border-radius: 999px;
+	border-radius: 10px 10px 6px 6px;
 	animation: eq-bounce 0.8s ease-in-out infinite alternate;
 }
 
