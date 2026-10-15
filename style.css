@@ -59,6 +59,20 @@ footer {
 	border-top: 1px solid rgba(255, 255, 255, 0.35);
 }
 
+/* content backing styling */
+section {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: var(--white);
+	border: 1px solid var(--light-gray);
+	color: var(--black);
+	padding: 1.2rem 1.6rem;
+	border-radius: 20px;
+	box-sizing: border-box;
+	margin: 20px auto;
+	max-width: 960px;
+	width: calc(100% - 40px);
+}
+
 /* nav link formatting and styling */
 .nav-links {
 	font-size: 1.1rem;
@@ -87,13 +101,14 @@ footer {
 	padding: 0.5rem 1rem;
 	border-radius: 999px;
 	border: 1px solid transparent;
-	transition: 
+	transition:
 		color 0.2s ease,
 		background-color 0.2s ease,
 		box-shadow 0.2s ease,
 		transform 0.2s ease;
 }
 
+/* smooth tab transitions between pages */
 @view-transition {
 	navigation: auto;
 }
@@ -126,20 +141,6 @@ footer {
 	font-weight: 700;
 	letter-spacing: -0.01em;
 	transition: 0.2s ease;
-}
-
-/* content backing styling */
-section {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	background-color: var(--white);
-	border: 1px solid var(--light-gray);
-	color: var(--black);
-	padding: 1.2rem 1.6rem;
-	border-radius: 20px;
-	box-sizing: border-box;
-	margin: 20px auto;
-	max-width: 960px;
-	width: calc(100% - 40px);
 }
 
 /* section heading styling */
@@ -487,6 +488,12 @@ input[type="submit"]:active {
 
 /* smaller screen styling */
 @media screen and (max-width: 768px) {
+	section {
+		padding: 0.6rem 1rem;
+		margin: 10px auto;
+		width: calc(100% - 20px);
+	}
+
 	header {
 		flex-direction: column;
 		text-align: center;
@@ -569,8 +576,6 @@ input[type="submit"]:active {
 		grid-template-columns: repeat(1, 1fr);
 	}
 }
-
-/* TODO reduce padding/margin of sections mobile */
 
 /* TODO add dark mode */
 
