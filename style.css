@@ -82,7 +82,7 @@ footer {
 /* individual nav link styling */
 .nav-links a {
 	color: rgba(255, 255, 255, 0.75);
-	font-weight: 500;
+	font-weight: 400;
 	display: inline-flex;
 	padding: 0.5rem 1rem;
 	border-radius: 999px;
@@ -90,7 +90,6 @@ footer {
 	transition: 
 		color 0.2s ease,
 		background-color 0.2s ease,
-		border-color 0.2s ease,
 		box-shadow 0.2s ease,
 		transform 0.2s ease;
 }
@@ -157,7 +156,7 @@ h2 {
 .page-description p {
 	text-align: center;
 	font-size: 1.2rem;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 /* remove underline from links */
@@ -205,6 +204,7 @@ a {
 	transition:
 		border-color 0.2s ease,
 		box-shadow 0.2s ease,
+		background-color 0.2s ease,
 		transform 0.2s ease;
 }
 
@@ -276,7 +276,6 @@ a {
 /* song and playlist caption styling */
 .song-artist,
 .playlist-description {
-	font-weight: 500;
 	color: var(--slate-gray);
 	white-space: nowrap;
 	overflow: hidden;
@@ -372,14 +371,14 @@ a {
 #getstarted {
 	text-align: center;
 	font-size: 1.2rem;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 /* playlist section description styling */
 #playlist-description {
 	text-align: center;
 	font-size: 1.2rem;
-	font-weight: bold;
+	font-weight: 700;
 	margin: 0.5rem 0 1.5rem 0;
 }
 
@@ -415,7 +414,6 @@ input[type=submit] {
 	.nav-links a:hover {
 		color: var(--white);
 		background: color-mix(in srgb, var(--white) 12%, transparent);
-		border-color: color-mix(in srgb, var(--white) 20%, transparent);
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 	}
 
@@ -444,7 +442,6 @@ input[type=submit] {
 		inset: 0 0 -3px 0;
 	}
 
-	/* TODO fix pixel shaving at edges of icon */
 	/* play button reaction when card is hovered */
 	.song-card:hover .play-indicator {
 		background-color: var(--purple-mid);
@@ -461,15 +458,17 @@ input[type=submit] {
 
 /* nav links darken slightly when pressed */
 .nav-links a:active {
+	color: var(--white);
 	background: color-mix(in srgb, var(--purple-light) 30%, transparent);
 	transform: scale(0.97);
 }
 
 /* tap-down active feedback */
-.playlist-card:active,
-.song-card:active {
-	transform: scale(0.98);
+.song-card:active,
+.playlist-card:active {
+	border-color: var(--purple-lightest);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	transform: scale(0.98);
 	background-color: var(--white-smoke);
 }
 
@@ -478,10 +477,6 @@ input[type=submit] {
 	color: var(--white-smoke);
 	transform: scale(0.97);
 	box-shadow: 0 0 10px color-mix(in srgb, var(--purple-mid) 50%, transparent);
-}
-
-.text-link:active {
-	color: var(--purple-light);
 }
 
 /* Submit button depression */
