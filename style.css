@@ -87,7 +87,12 @@ footer {
 	padding: 0.5rem 1rem;
 	border-radius: 999px;
 	border: 1px solid transparent;
-	transition: 0.2s ease;
+	transition: 
+		color 0.2s ease,
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.2s ease;
 }
 
 @view-transition {
@@ -194,10 +199,13 @@ a {
 	text-align: left;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 	border: 1px solid var(--light-gray);
-	transition: 0.2s ease;
 	cursor: pointer;
 	font-family: inherit;
 	position: relative;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.2s ease;
 }
 
 .song-card {
@@ -313,7 +321,6 @@ a {
 	background: rgba(0, 0, 0, 0.25);
 	backdrop-filter: blur(2px);
 	-webkit-backdrop-filter: blur(2px);
-
 	opacity: 0;
 	will-change: opacity;
 	transition: opacity 0.2s ease;
@@ -330,6 +337,7 @@ a {
 	background-color: var(--white);
 	border-radius: 20px 20px 10px 10px;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+	will-change: height;
 	animation: eq-bounce ease-in-out infinite alternate;
 }
 
@@ -423,8 +431,8 @@ input[type=submit] {
 
 	.song-card:hover,
 	.playlist-card:hover {
-		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 		border-color: var(--purple-lightest);
+		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 		transform: translateY(-2px);
 	}
 
@@ -436,6 +444,7 @@ input[type=submit] {
 		inset: 0 0 -3px 0;
 	}
 
+	/* TODO fix pixel shaving at edges of icon */
 	/* play button reaction when card is hovered */
 	.song-card:hover .play-indicator {
 		background-color: var(--purple-mid);
@@ -468,6 +477,7 @@ input[type=submit] {
 	background-color: var(--purple-mid);
 	color: var(--white-smoke);
 	transform: scale(0.97);
+	box-shadow: 0 0 10px color-mix(in srgb, var(--purple-mid) 50%, transparent);
 }
 
 .text-link:active {
@@ -526,6 +536,7 @@ input[type="submit"]:active {
 		margin: 0.2rem;
 		overflow: hidden;
 		white-space: nowrap;
+		will-change: max-height, opacity;
 		transition: 0.2s ease;
 	}
 
