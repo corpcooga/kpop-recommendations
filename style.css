@@ -310,22 +310,17 @@ a {
 	padding: 28px;
 	gap: 2px;
 	pointer-events: none;
+	background: rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+
 	opacity: 0;
-	background: rgba(0, 0, 0, 0);
-	backdrop-filter: blur(0px);
-	-webkit-backdrop-filter: blur(0px);
-	transition:
-		opacity 0.2s ease,
-		background 0.2s ease,
-		backdrop-filter 0.2s ease,
-		-webkit-backdrop-filter 0.2s ease;
+	will-change: opacity;
+	transition: opacity 0.2s ease;
 }
 
 .equalizer.is-active {
 	opacity: 1;
-	background: rgba(0, 0, 0, 0.25);
-	backdrop-filter: blur(2px);
-	-webkit-backdrop-filter: blur(2px);
 }
 
 /* individual equalizer bars */

@@ -26,8 +26,6 @@ function hideEqualizer() {
 	equalizerEl.classList.remove("is-active");
 }
 
-// TODO fix song play delay
-
 // global audio controller
 let currentAudio = null;
 let currentActiveCard = null;
@@ -35,39 +33,27 @@ const audioCache = new Map();
 
 const songCards = document.querySelectorAll(".song-card");
 
-// helper: creates the Audio object ONLY when needed (avoids choking iOS memory limit)
-function getOrCreateAudio(card) {
-	if (!audioCache.has(card)) {
-		const indicator = card.querySelector(".play-indicator");
-		const audio = new Audio(card.dataset.preview);
-		audio.preload = "auto";
-		audio.volume = 0.4;
-
-		audio.onended = () => {
-			hideEqualizer();
-			indicator.innerHTML = PLAY_ICON;
-			currentAudio = null;
-			currentActiveCard = null;
-		};
-
-		audioCache.set(card, audio);
-	}
-	return audioCache.get(card);
-}
-
-// preload ONLY the cards currently visible on screen
-const observer = new IntersectionObserver((entries, obs) => {
-	entries.forEach((entry) => {
-		if (entry.isIntersecting) {
-			getOrCreateAudio(entry.target);
-			obs.unobserve(entry.target);
-		}
-	});
-}, { rootMargin: "150px" });
-
 songCards.forEach((card) => {
-	observer.observe(card);
 	const indicator = card.querySelector(".play-indicator");
+
+	const audio = new Audio();
+	audio.preload = "none";
+	audio.src = card.dataset.preview;
+	audio.volume = 0.4;
+
+	audio.onended = () => {
+		hideEqualizer();
+		indicator.innerHTML = PLAY_ICON;
+		currentAudio = null;
+		currentActiveCard = null;
+	};
+
+	audioCache.set(card, audio);
+
+	// pre-buffer ONLY the specific card the user hovers over (100% of bandwidth goes to 1 song)
+	card.addEventListener("mouseenter", () => {
+		audio.preload = "auto";
+	}, { passive: true, once: true });
 
 	card.addEventListener("click", () => {
 		// toggling the currently playing card
@@ -93,15 +79,15 @@ songCards.forEach((card) => {
 		}
 
 		currentActiveCard = card;
-		currentAudio = getOrCreateAudio(card);
-
-		showEqualizer(card);
-		indicator.innerHTML = PAUSE_ICON;
+		currentAudio = audioCache.get(card);
 
 		// catch any mobile playback interruption so the UI never gets stuck
 		currentAudio.play().catch(() => {
 			hideEqualizer();
 			indicator.innerHTML = PLAY_ICON;
 		});
+
+		showEqualizer(card);
+		indicator.innerHTML = PAUSE_ICON;
 	});
 });
