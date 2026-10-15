@@ -26,6 +26,8 @@ function hideEqualizer() {
 	equalizerEl.classList.remove("is-active");
 }
 
+// TODO fix song play delay
+
 // global audio controller
 let currentAudio = null;
 let currentActiveCard = null;

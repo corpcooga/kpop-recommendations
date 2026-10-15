@@ -69,7 +69,7 @@ footer {
 	margin: 0.25rem 0;
 	border-radius: 999px;
 
-	background: color-mix(in srgb, var(--purple-med) 45%, transparent);
+	background: color-mix(in srgb, var(--purple-mid) 45%, transparent);
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
@@ -441,12 +441,12 @@ input[type=submit] {
 		inset: 0 0 -3px 0;
 	}
 
-	/* TODO fix jitter on play indicator sometimes */
 	/* play button reaction when card is hovered */
 	.song-card:hover .play-indicator {
 		background-color: var(--purple-mid);
 		color: var(--white-smoke);
 		transform: scale(1.08);
+		box-shadow: 0 0 10px color-mix(in srgb, var(--purple-mid) 50%, transparent);
 	}
 
 	input[type=submit]:hover {
