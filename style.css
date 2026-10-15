@@ -192,17 +192,17 @@ a {
 	padding: 1rem;
 	min-width: 0;
 	text-align: left;
-	box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 	border: 1px solid var(--light-gray);
 	transition: 0.2s ease;
 	cursor: pointer;
 	font-family: inherit;
+	position: relative;
 }
 
 .song-card {
 	align-items: center;
 	gap: 1rem;
-	position: relative;
 }
 
 .playlist-card {
@@ -297,7 +297,6 @@ a {
 	transition: 0.2s ease;
 }
 
-/* TODO fix equalizer bg jittering on start sometimes */
 /* container positioned over the song cover */
 .equalizer {
 	position: absolute;
@@ -427,10 +426,19 @@ input[type=submit] {
 		color: var(--purple-lightest);
 	}
 
-	/* TODO fix infinite hover loop jitter on song and playlist card */
-	.song-card:hover {
-		transform: translateY(-1px);
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	.song-card:hover,
+	.playlist-card:hover {
+		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+		border-color: var(--purple-lightest);
+		transform: translateY(-2px);
+	}
+
+	/* invisible hitbox bridge that fills the gap underneath when lifted */
+	.song-card:hover::after,
+	.playlist-card:hover::after {
+		content: "";
+		position: absolute;
+		inset: 0 0 -3px 0;
 	}
 
 	/* TODO fix jitter on play indicator sometimes */
@@ -439,11 +447,6 @@ input[type=submit] {
 		background-color: var(--purple-mid);
 		color: var(--white-smoke);
 		transform: scale(1.08);
-	}
-
-	.playlist-card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 	}
 
 	input[type=submit]:hover {
