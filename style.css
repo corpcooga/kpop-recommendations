@@ -333,12 +333,17 @@ a {
 /* individual equalizer bars */
 .equalizer span {
 	width: 7px;
-	height: 100%;
+	height: 30%;
 	background-color: var(--white);
 	border-radius: 20px 20px 10px 10px;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 	will-change: height;
 	animation: eq-bounce ease-in-out infinite alternate;
+}
+
+/* hold the bars still while the song buffers */
+.equalizer.is-paused span {
+	animation-play-state: paused;
 }
 
 /* Stagger each bar's animation */

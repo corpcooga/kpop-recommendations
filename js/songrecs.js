@@ -19,11 +19,11 @@ function showEqualizer(card) {
 		card.appendChild(equalizerEl);
 		void equalizerEl.offsetWidth;
 	}
-	equalizerEl.classList.add("is-active");
+	equalizerEl.classList.add("is-active", "is-paused");
 }
 
 function hideEqualizer() {
-	equalizerEl.classList.remove("is-active");
+	equalizerEl.classList.remove("is-active", "is-paused");
 }
 
 // global audio controller
@@ -50,10 +50,12 @@ songCards.forEach((card) => {
 
 	audioCache.set(card, audio);
 
-	// pre-buffer ONLY the specific card the user hovers over (100% of bandwidth goes to 1 song)
-	card.addEventListener("mouseenter", () => {
+	// Pre-buffer when hovering on desktop or first touching on mobile
+	const warmUp = () => {
 		audio.preload = "auto";
-	}, { passive: true, once: true });
+	};
+	card.addEventListener("mouseenter", warmUp, { passive: true, once: true });
+	card.addEventListener("touchstart", warmUp, { passive: true, once: true });
 
 	card.addEventListener("click", () => {
 		// toggling the currently playing card
@@ -65,7 +67,11 @@ songCards.forEach((card) => {
 			} else {
 				showEqualizer(card);
 				indicator.innerHTML = PAUSE_ICON;
-				currentAudio.play();
+				currentAudio.play().then(() => {
+					if (currentActiveCard === card) {
+						equalizerEl.classList.remove("is-paused");
+					}
+				});
 			}
 			return;
 		}
@@ -81,13 +87,23 @@ songCards.forEach((card) => {
 		currentActiveCard = card;
 		currentAudio = audioCache.get(card);
 
-		// catch any mobile playback interruption so the UI never gets stuck
-		currentAudio.play().catch(() => {
-			hideEqualizer();
-			indicator.innerHTML = PLAY_ICON;
-		});
-
 		showEqualizer(card);
 		indicator.innerHTML = PAUSE_ICON;
+
+		currentAudio.play()
+			.then(() => {
+				if (currentActiveCard === card) {
+					equalizerEl.classList.remove("is-paused");
+				}
+			})
+			.catch(() => {
+				// only hide if the user hasn't switched to a different card
+				if (currentActiveCard === card) {
+					hideEqualizer();
+					indicator.innerHTML = PLAY_ICON;
+					currentAudio = null;
+					currentActiveCard = null;
+				}
+			});
 	});
 });
