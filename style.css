@@ -322,7 +322,6 @@ a {
 	backdrop-filter: blur(2px);
 	-webkit-backdrop-filter: blur(2px);
 	opacity: 0;
-	will-change: opacity;
 	transition: opacity 0.2s ease;
 }
 
@@ -337,7 +336,6 @@ a {
 	background-color: var(--white);
 	border-radius: 20px 20px 10px 10px;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-	will-change: height;
 	animation: eq-bounce ease-in-out infinite alternate;
 }
 

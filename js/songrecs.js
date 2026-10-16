@@ -26,6 +26,24 @@ function hideEqualizer() {
 	equalizerEl.classList.remove("is-active", "is-paused");
 }
 
+// unpauses the EQ bars on the exact frame the audio playhead physically starts moving
+function startEqualizerWhenPlaying(audio, card) {
+	const startTime = audio.currentTime;
+
+	function checkPlayhead() {
+		// stop checking if the user switched to another card or paused
+		if (currentActiveCard !== card || audio.paused) return;
+
+		if (audio.currentTime > startTime) {
+			equalizerEl.classList.remove("is-paused");
+		} else {
+			requestAnimationFrame(checkPlayhead);
+		}
+	}
+
+	requestAnimationFrame(checkPlayhead);
+}
+
 // global audio controller
 let currentAudio = null;
 let currentActiveCard = null;
@@ -67,21 +85,29 @@ songCards.forEach((card) => {
 			} else {
 				showEqualizer(card);
 				indicator.innerHTML = PAUSE_ICON;
-				currentAudio.play().then(() => {
-					if (currentActiveCard === card) {
-						equalizerEl.classList.remove("is-paused");
-					}
-				});
+				currentAudio.play()
+					.then(() => {
+						startEqualizerWhenPlaying(currentAudio, card);
+					})
+					.catch(() => {});
 			}
 			return;
 		}
 
-		// another song was already playing: pause and reset its icon
+		// another song was already playing or loading: pause and reset its icon
 		if (currentAudio) {
 			hideEqualizer();
 			currentActiveCard.querySelector(".play-indicator").innerHTML = PLAY_ICON;
 			currentAudio.pause();
-			currentAudio.currentTime = 0;
+
+			if (currentAudio.readyState >= 3) {
+				// already buffered: keep it in cache and rewind to 0:00
+				currentAudio.currentTime = 0;
+			} else {
+				// still buffering on slow internet: abort download so it doesn't hog bandwidth
+				currentAudio.preload = "none";
+				currentAudio.src = currentActiveCard.dataset.preview;
+			}
 		}
 
 		currentActiveCard = card;
@@ -93,7 +119,7 @@ songCards.forEach((card) => {
 		currentAudio.play()
 			.then(() => {
 				if (currentActiveCard === card) {
-					equalizerEl.classList.remove("is-paused");
+					startEqualizerWhenPlaying(currentAudio, card);
 				}
 			})
 			.catch(() => {
