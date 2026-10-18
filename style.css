@@ -1,4 +1,4 @@
-:root {
+/* :root {
 	--purple-dark: #351e7b;
 	--purple-mid: #5333a8;
 	--purple-light: #7d6eed;
@@ -9,6 +9,32 @@
 	--light-gray: lightgray;
 	--slate-gray: slategray;
 	--black: black;
+} */
+
+:root {
+	--purple-dark: #351e7b;
+	--purple-mid: #5333a8;
+	--purple-light: #7d6eed;
+	--purple-lightest: #c4b4e3;
+
+	--pure-white: #ffffff;
+	--white: #ffffff;          /* Card & section backgrounds */
+	--white-smoke: #f5f5f5;    /* Page background & play button resting bg */
+	--light-gray: #d3d3d3;     /* Borders */
+	--slate-gray: #708090;     /* Artist & subtitle text */
+	--black: #000000;          /* Primary title & body text */
+}
+
+/* Automatic OS Dark Mode + Manual Toggle Support */
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--purple-mid: #6e4bc3;       /* Slightly brighter so h2s & buttons pop on dark */
+		--white: #181526;            /* Deep midnight-purple for sections & cards */
+		--white-smoke: #0e0c18;      /* Darker base background & play button resting bg */
+		--light-gray: #2d2747;       /* Subtle muted purple borders */
+		--slate-gray: #a59ec2;       /* Soft lavender-gray for artist names */
+		--black: #f2f0fa;            /* Crisp off-white for song titles & body text */
+	}
 }
 
 body {
