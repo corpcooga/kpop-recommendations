@@ -3,12 +3,35 @@
 	--purple-mid: #5333a8;
 	--purple-light: #7d6eed;
 	--purple-lightest: #c4b4e3;
-
+	
+	--card-hover: #c4b4e3;
+	--card-separator: whitesmoke;
+	--banner-start: #351e7b;
+	--banner-end: #5333a8;
+	--pure-white: white;
+	--banner-glow: rgba(125, 110, 237, 0.5);
 	--white: white;
 	--white-smoke: whitesmoke;
 	--light-gray: lightgray;
 	--slate-gray: slategray;
+	--section-bg: white;
 	--black: black;
+}
+
+/* @media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) { */
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--purple-mid: #9b87f5;
+		--card-separator: rgba(255, 255, 255, 0.08);
+		--card-hover: rgba(255, 255, 255, 0.3);
+		--white: #1e1b2e;
+		--section-bg: #141220;
+		--white-smoke: #0b0914;
+		--light-gray: rgba(255, 255, 255, 0.08);
+		--slate-gray: #a59ec2;
+		--black: #f5f4fb;
+	}
 }
 
 body {
@@ -31,15 +54,15 @@ main {
 header,
 footer {
 	display: flex;
-	color: var(--white);
+	color: var(--pure-white);
 	background: linear-gradient(to right,
-			color-mix(in srgb, var(--purple-dark) 90%, transparent),
-			color-mix(in srgb, var(--purple-mid) 90%, transparent));
+			color-mix(in srgb, var(--banner-start) 90%, transparent),
+			color-mix(in srgb, var(--banner-end) 90%, transparent));
 	backdrop-filter: blur(14px) saturate(180%);
 	-webkit-backdrop-filter: blur(14px) saturate(180%);
 	box-shadow:
 		inset 0 0 10px rgba(255, 255, 255, 0.1),
-		0 0 30px rgba(125, 110, 237, 0.8);
+		0 0 30px var(--banner-glow);
 }
 
 header {
@@ -55,14 +78,13 @@ header {
 footer {
 	display: flex;
 	justify-content: center;
-	border-bottom: none;
 	border-top: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 /* content backing styling */
 section {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	background-color: var(--white);
+	background-color: var(--section-bg);
 	border: 1px solid var(--light-gray);
 	color: var(--black);
 	padding: 1.2rem 1.6rem;
@@ -83,7 +105,7 @@ section {
 	margin: 0.25rem 0;
 	border-radius: 999px;
 
-	background: color-mix(in srgb, var(--purple-mid) 45%, transparent);
+	background: color-mix(in srgb, var(--banner-end) 45%, transparent);
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
@@ -115,7 +137,7 @@ section {
 
 /* current page nav link styling */
 .nav-links a.active {
-	color: var(--white);
+	color: var(--pure-white);
 	font-weight: 700;
 	pointer-events: none;
 	cursor: default;
@@ -136,7 +158,7 @@ section {
 
 /* main title styling */
 .site-title a {
-	color: inherit;
+	color: var(--pure-white);
 	font-size: 1.5rem;
 	font-weight: 700;
 	letter-spacing: -0.01em;
@@ -147,7 +169,7 @@ section {
 h2 {
 	font-size: 1.6rem;
 	color: var(--purple-mid);
-	border-bottom: 2px solid var(--white-smoke);
+	border-bottom: 2px solid var(--card-separator);
 	text-align: center;
 	padding-bottom: 0.5rem;
 	margin-bottom: 1rem;
@@ -216,6 +238,12 @@ a {
 
 .playlist-card {
 	flex-direction: column;
+}
+
+/* card border glows gently while actively playing */
+.song-card:has(.equalizer.is-active) {
+	border-color: color-mix(in srgb, var(--purple-mid) 60%, transparent);
+	box-shadow: 0 0 20px color-mix(in srgb, var(--purple-mid) 20%, transparent);
 }
 
 /* song and playlist cover art styling + equalizer covering */
@@ -295,7 +323,8 @@ a {
 .play-indicator {
 	width: 40px;
 	height: 40px;
-	background-color: var(--white-smoke);
+	/* background-color: var(--white-smoke); */
+	background-color: color-mix(in srgb, var(--purple-mid) 15%, transparent);
 	color: var(--purple-mid);
 	border-radius: 50%;
 	display: flex;
@@ -333,7 +362,7 @@ a {
 .equalizer span {
 	width: 7px;
 	height: 30%;
-	background-color: var(--white);
+	background-color: var(--pure-white);
 	border-radius: 20px 20px 10px 10px;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 	animation: eq-bounce ease-in-out infinite alternate;
@@ -388,6 +417,8 @@ a {
 
 /* contact message box styling */
 input[type=text] {
+	background: var(--white);
+	color: var(--black);
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
@@ -416,7 +447,7 @@ input[type=submit] {
 
 	/* individual nav link hover styling */
 	.nav-links a:hover {
-		color: var(--white);
+		color: var(--pure-white);
 		background: color-mix(in srgb, var(--white) 12%, transparent);
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 	}
@@ -433,7 +464,7 @@ input[type=submit] {
 
 	.song-card:hover,
 	.playlist-card:hover {
-		border-color: var(--purple-lightest);
+		border-color: var(--card-hover);
 		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 		transform: translateY(-2px);
 	}
@@ -462,7 +493,7 @@ input[type=submit] {
 
 /* nav links darken slightly when pressed */
 .nav-links a:active {
-	color: var(--white);
+	color: var(--pure-white);
 	background: color-mix(in srgb, var(--purple-light) 30%, transparent);
 	transform: scale(0.97);
 }
@@ -470,7 +501,7 @@ input[type=submit] {
 /* tap-down active feedback */
 .song-card:active,
 .playlist-card:active {
-	border-color: var(--purple-lightest);
+	border-color: var(--card-hover);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 	transform: scale(0.98);
 	background-color: var(--white-smoke);
