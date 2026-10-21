@@ -87,7 +87,7 @@ section {
 	background-color: var(--section-bg);
 	border: 1px solid var(--light-gray);
 	color: var(--black);
-	padding: 1.2rem 1.6rem;
+	padding: 0.5rem 1.6rem;
 	border-radius: 20px;
 	box-sizing: border-box;
 	margin: 20px auto;
@@ -191,6 +191,25 @@ a {
 .text-link {
 	color: var(--purple-light);
 	transition: 0.2s ease;
+}
+
+/* container for the section heading & subtitle */
+.song-section h2 {
+	border-bottom: none;
+	margin: 1rem 0 0.2rem 0;
+	padding: 0;
+}
+
+.song-section > p {
+	text-align: center;
+	font-size: 0.95rem;
+	color: var(--slate-gray);
+	margin: 0 0 1.2rem 0;
+}
+
+.song-section .badge {
+	opacity: 0.7;
+	font-size: 0.85rem;
 }
 
 /* grid layout for song recs and playlists */
@@ -523,7 +542,7 @@ input[type="submit"]:active {
 /* smaller screen styling */
 @media screen and (max-width: 768px) {
 	section {
-		padding: 0.6rem 1rem;
+		padding: 0.5rem 1rem;
 		margin: 10px auto;
 		width: calc(100% - 20px);
 	}
