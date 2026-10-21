@@ -5,7 +5,6 @@
 	--purple-lightest: #c4b4e3;
 	
 	--card-hover: #c4b4e3;
-	--card-separator: whitesmoke;
 	--banner-start: #351e7b;
 	--banner-end: #5333a8;
 	--pure-white: white;
@@ -23,7 +22,6 @@
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme="light"]) {
 		--purple-mid: #9b87f5;
-		--card-separator: rgba(255, 255, 255, 0.08);
 		--card-hover: rgba(255, 255, 255, 0.3);
 		--white: #1e1b2e;
 		--section-bg: #141220;
@@ -165,21 +163,23 @@ section {
 	transition: 0.2s ease;
 }
 
+/* TODO continue fine-tuning section headers */
+
 /* section heading styling */
 h2 {
 	font-size: 1.6rem;
 	color: var(--purple-mid);
-	border-bottom: 2px solid var(--card-separator);
 	text-align: center;
-	padding-bottom: 0.5rem;
-	margin-bottom: 1rem;
+	margin: 1rem 0 0.6rem 0;
 }
 
 /* styling for description of each page */
 .page-description p {
 	text-align: center;
-	font-size: 1.2rem;
-	font-weight: 700;
+	color: var(--slate-gray);
+	font-size: 1.1rem;
+	font-weight: 500;
+	margin: 0 0 1rem 0;
 }
 
 /* remove underline from links */
@@ -217,7 +217,7 @@ a {
 .playlist-grid {
 	display: grid;
 	gap: 0.5rem;
-	margin: 0.6rem 0;
+	margin: 0.6rem 0 1rem 0;
 }
 
 .song-grid {
@@ -613,11 +613,13 @@ input[type="submit"]:active {
 	/* song grid layout becomes one column on smaller screens */
 	.song-grid {
 		grid-template-columns: repeat(1, 1fr);
+		margin-bottom: 0.5rem;
 	}
 
 	/* playlist grid layout becomes two columns on smaller screens */
 	.playlist-grid {
 		grid-template-columns: repeat(2, 1fr);
+		margin-bottom: 0.5rem;
 	}
 }
 
