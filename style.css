@@ -3,7 +3,7 @@
 	--purple-mid: #5333a8;
 	--purple-light: #7d6eed;
 	--purple-lightest: #c4b4e3;
-	
+
 	--card-hover: #c4b4e3;
 	--banner-start: #351e7b;
 	--banner-end: #5333a8;
@@ -200,7 +200,7 @@ a {
 	padding: 0;
 }
 
-.song-section > p {
+.song-section>p {
 	text-align: center;
 	font-size: 0.95rem;
 	color: var(--slate-gray);
@@ -262,7 +262,9 @@ a {
 /* card border glows gently while actively playing */
 .song-card:has(.equalizer.is-active) {
 	border-color: color-mix(in srgb, var(--purple-mid) 60%, transparent);
-	box-shadow: 0 0 20px color-mix(in srgb, var(--purple-mid) 20%, transparent);
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, var(--purple-mid) 60%, transparent),
+		0 0 20px color-mix(in srgb, var(--purple-mid) 20%, transparent);
 }
 
 /* song and playlist cover art styling + equalizer covering */
