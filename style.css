@@ -524,7 +524,7 @@ input[type=submit] {
 .playlist-card:active {
 	border-color: var(--card-hover);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-	transform: scale(0.98);
+	transform: scale(0.98) translateY(-2px);
 	background-color: var(--white-smoke);
 }
 
