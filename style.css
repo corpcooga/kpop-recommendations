@@ -193,12 +193,12 @@ a {
 
 /* container for the section heading & subtitle */
 .song-section h2 {
-	border-bottom: none;
 	margin: 1rem 0 0.2rem 0;
 	padding: 0;
 }
 
-.song-section>p {
+/* song and playlist section description styling */
+.song-section>p, .playlist-section>p {
 	text-align: center;
 	font-size: 0.95rem;
 	color: var(--slate-gray);
@@ -422,16 +422,9 @@ a {
 /* home page alternate navigation message styling */
 #getstarted {
 	text-align: center;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	font-weight: 700;
-}
-
-/* playlist section description styling */
-#playlist-description {
-	text-align: center;
-	font-size: 1.2rem;
-	font-weight: 700;
-	margin: 0.5rem 0 1.5rem 0;
+	margin: 0 0 1rem 0;
 }
 
 /* contact message box styling */
