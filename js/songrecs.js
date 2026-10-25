@@ -1,4 +1,11 @@
-// Clean vector SVG icons
+// handles song number in song section header area
+document.querySelectorAll(".song-section").forEach((section) => {
+	const badge = section.querySelector(".badge");
+	const numSongs = section.querySelectorAll(".song-card").length;
+	if (badge)
+		badge.textContent = `• ${numSongs} song${numSongs > 1 ? "s" : ""}`;
+});
+
 const PLAY_ICON = `
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
     <path d="M8 5v14l11-7z"/>
@@ -9,7 +16,7 @@ const PAUSE_ICON = `
     <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
   </svg>`;
 
-// A reusable equalizer element created once in memory
+// reusable equalizer element created once in memory
 const equalizerEl = document.createElement("div");
 equalizerEl.className = "equalizer";
 equalizerEl.innerHTML = "<span></span><span></span><span></span><span></span>";
@@ -89,7 +96,7 @@ songCards.forEach((card) => {
 					.then(() => {
 						startEqualizerWhenPlaying(currentAudio, card);
 					})
-					.catch(() => {});
+					.catch(() => { });
 			}
 			return;
 		}
