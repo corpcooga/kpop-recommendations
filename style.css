@@ -314,7 +314,6 @@ a {
 
 .song-title {
 	font-size: 1.05rem;
-
 }
 
 .playlist-title {
@@ -427,30 +426,53 @@ a {
 	margin: 0 0 1rem 0;
 }
 
-/* TODO change styling */
-/* contact message box styling */
-input[type=text] {
+/* contact form inputs */
+input[type=email],
+textarea {
 	background: var(--white);
 	color: var(--black);
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
-	padding: 1rem;
+	font-family: inherit;
+	font-size: 0.95rem;
+	border-radius: 20px;
 	border: 1px solid var(--light-gray);
-	border-radius: 2rem;
 	outline: none;
+	transition: 0.2s ease;
 }
 
-/* submit button styling */
+/* compact pill for the email field */
+input[type=email] {
+	padding: 0.75rem 1.1rem;
+	margin-bottom: 0.75rem;
+}
+
+/* taller rounded rectangle for the message box */
+textarea {
+	padding: 1rem 1.1rem;
+	min-height: 100px;
+	margin-bottom: 1rem;
+	resize: vertical;
+}
+
+input[type=email]:focus,
+textarea:focus {
+	border-color: var(--purple-light);
+}
+
 input[type=submit] {
 	background: linear-gradient(to right, var(--purple-mid), var(--purple-light));
 	color: var(--white);
 	background-size: 400%;
-	padding: 1rem;
-	margin: 1rem 0;
+	padding: 0.9rem;
+	margin-bottom: 1rem;
 	width: 100%;
 	border: none;
-	border-radius: 2rem;
+	border-radius: 20px;
+	font-family: inherit;
+	font-size: 0.95rem;
+	font-weight: 600;
 	cursor: pointer;
 	transition: 0.2s ease;
 }
@@ -499,7 +521,6 @@ input[type=submit] {
 	}
 
 	input[type=submit]:hover {
-		box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 		background-position: right;
 	}
 }
@@ -529,8 +550,7 @@ input[type=submit] {
 
 /* Submit button depression */
 input[type="submit"]:active {
-	transform: scale(0.97);
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	transform: scale(0.98);
 }
 
 /* smaller screen styling */
