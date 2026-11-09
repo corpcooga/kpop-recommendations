@@ -13,6 +13,7 @@
 	<!-- link to CSS and JavaScript files -->
 	<link rel="stylesheet" href="style.css">
 	<script src="js/main.js" defer></script>
+	<script src="js/contact.js" defer></script>
 </head>
 <body>
 	<header>
@@ -32,13 +33,12 @@
 			<p>Contact me on anything Kpop-related</p>
 		</section>
 		<section>
-			<!-- TODO change how contact works -->
-			<!-- form to contact me -->
-			<form action="mailto:boonhchew@gmail.com" method="POST" enctype="text/plain" target="_blank" rel="noopener noreferrer">
-				<!-- text input -->
-				<label for="message"><h2>Your Message</h2></label>
-				<input type="text" id="message" name="message" placeholder="Type your message here...">
-				<input type="submit">
+			<form id="contact-form">
+				<h2>Your Message</h2>
+				<input type="email" id="sender-email" name="email" placeholder="Your email address (so I can reply)..." required>
+				<input type="text" id="message" name="message" placeholder="Type your message here..." required>
+				<input type="submit" id="submit-btn" value="Send Message">
+				<p id="form-status" style="text-align: center; margin: 0.5rem 0 0 0; display: none;"></p>
 			</form>
 		</section>
 	</main>
