@@ -198,7 +198,8 @@ a {
 }
 
 /* song and playlist section description styling */
-.song-section>p, .playlist-section>p {
+.song-section>p,
+.playlist-section>p {
 	text-align: center;
 	font-size: 0.95rem;
 	color: var(--slate-gray);
@@ -633,6 +634,10 @@ input[type="submit"]:active {
 	/* playlist grid layout becomes two columns on smaller screens */
 	.playlist-grid {
 		grid-template-columns: repeat(2, 1fr);
+		margin-bottom: 0.5rem;
+	}
+
+	input[type=submit] {
 		margin-bottom: 0.5rem;
 	}
 }
