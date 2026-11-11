@@ -21,12 +21,14 @@ An interactive web application designed to explore curated K-pop tracks and play
 - **Custom Audio Engine:** Eliminates playback latency using hover/touch pre-buffering, in-memory `Map` caching, and bandwidth-saving stream cancellation on rapid skips.
 - **Responsive UI & Navigation:** Multi-column layout across 3 viewport breakpoints via CSS Grid and Flexbox, featuring a scroll-aware collapsible mobile navbar with delta thresholds and animation transition locks.
 - **Automated Card Generator:** Internal utility querying the iTunes Search API to dynamically extract track metadata, 600px cover art, and audio streams into reusable HTML card templates.
+- **Serverless Contact API:** Custom Python/Flask REST endpoint deployed on Vercel using Gmail SMTP SSL (`smtplib`), strict CORS origin whitelisting, and asynchronous `fetch()` state handling.
 
 ---
 
 ## Built With
 
 - **Frontend:** HTML5, CSS3 (Grid & Flexbox), Vanilla JavaScript (ES6+)
+- **Backend & Deployment:** Python, Flask, Vercel Serverless Functions, GitHub Pages
 - **Media & Data:** Apple Music / iTunes Search API
 
 ---
